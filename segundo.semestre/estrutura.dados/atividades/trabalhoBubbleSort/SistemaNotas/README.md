@@ -40,28 +40,28 @@ SistemaNotas/
    git clone https://github.com/SEU-USUARIO/SistemaNotas.git
    ```
 2. Entre na pasta do projeto:
-```
+   ```
    cd SistemaNotas
-```
+   ```
 
 3. Execute o projeto:
-```
+   ```
    dotnet run
-```
+   ```
 Exemplo de saída
 
 
 Tecnologias utilizadas
-```
+   ```
 C#
 
 .NET Console
-```
+   ```
 **Autores**
-```
+   ```
 Projeto desenvolvido por:
 
 Caio, Carlos, João e Geovanny.
-```
+   ```
 
 ---
