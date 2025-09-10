@@ -1,16 +1,16 @@
-# 📊 Sistema de Classificação de Notas
+# Sistema de Classificação de Notas com Bubble Sort
 
 Este é um sistema simples em **C#** para classificar alunos com base em suas notas.  
 O programa ordena os alunos em ordem decrescente de nota e exibe a classificação final, além de estatísticas da turma.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 - Ordenação das notas usando **Bubble Sort**.  
 - Exibição da classificação final com posição, nome, nota e status:  
-  - ✅ **Aprovado** (nota >= 7.0)  
-  - ⚠️ **Recuperação** (nota entre 5.0 e 6.9)  
-  - ❌ **Reprovado** (nota < 5.0)  
+  - **Aprovado** (nota >= 7.0)  
+  - **Recuperação** (nota entre 5.0 e 6.9)  
+  - **Reprovado** (nota < 5.0)  
 - Cálculo de estatísticas da turma:
   - Média da turma  
   - Maior nota  
@@ -19,10 +19,12 @@ O programa ordena os alunos em ordem decrescente de nota e exibe a classificaç�
 
 ---
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
+```
 SistemaNotas/
-│-- Program.cs # Código principal do sistema
-│-- SistemaClassificacaoNotas.csproj
+│-- Program.cs
+│-- SistemaNotas.csproj
+```
 
 ---
 
@@ -34,27 +36,29 @@ SistemaNotas/
 
 ### Passos
 1. Clone o repositório:
-   ```sh
+   ```
    git clone https://github.com/SEU-USUARIO/SistemaNotas.git
+   ```
 2. Entre na pasta do projeto:
-
+```
 cd SistemaNotas
-
+```
 
 3. Execute o projeto:
-
+```
 dotnet run
+```
+Exemplo de saída
 
-💻 Exemplo de saída
-🛠️ Tecnologias utilizadas
+
+Tecnologias utilizadas
 
 C#
 
 .NET Console
-📌 Autor
+**Autores**
 
-Projeto desenvolvido por Seu Nome
-.
+Projeto desenvolvido por Caio, Carlos, João e Geovanny.
 
 
 ---
