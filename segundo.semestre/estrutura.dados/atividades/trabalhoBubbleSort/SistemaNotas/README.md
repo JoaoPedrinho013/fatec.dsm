@@ -28,7 +28,7 @@ SistemaNotas/
 
 ---
 
-## ▶️ Como executar
+## Como executar
 
 ### Pré-requisitos
 - [.NET SDK](https://dotnet.microsoft.com/pt-br/download) instalado na sua máquina
