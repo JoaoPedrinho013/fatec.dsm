@@ -20,11 +20,14 @@ O programa ordena os alunos em ordem decrescente de nota e exibe a classificaç�
 ---
 
 ## Estrutura do Projeto
-```
-SistemaNotas/
-│-- Program.cs
-│-- SistemaNotas.csproj
-```
+    ```
+    SistemaNotas/
+    │-- Program.cs
+    │-- SistemaNotas.csproj
+    │-- README.md
+    │-- imgs/
+    │-- saida.png
+    ```
 
 ---
 
@@ -49,19 +52,20 @@ SistemaNotas/
    dotnet run
    ```
 Exemplo de saída
+  ![Exemplo de saída](imgs/exemploSaida.png)
 
 
 Tecnologias utilizadas
    ```
-C#
+   C#
 
-.NET Console
+   .NET Console
    ```
 **Autores**
    ```
-Projeto desenvolvido por:
+   Projeto desenvolvido por:
 
-Caio, Carlos, João e Geovanny.
+   Caio, Carlos, João e Geovanny.
    ```
 
 ---
