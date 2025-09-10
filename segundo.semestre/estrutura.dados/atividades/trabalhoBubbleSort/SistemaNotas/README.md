@@ -41,24 +41,27 @@ SistemaNotas/
    ```
 2. Entre na pasta do projeto:
 ```
-cd SistemaNotas
+   cd SistemaNotas
 ```
 
 3. Execute o projeto:
 ```
-dotnet run
+   dotnet run
 ```
 Exemplo de saída
 
 
 Tecnologias utilizadas
-
+```
 C#
 
 .NET Console
+```
 **Autores**
+```
+Projeto desenvolvido por:
 
-Projeto desenvolvido por Caio, Carlos, João e Geovanny.
-
+Caio, Carlos, João e Geovanny.
+```
 
 ---
