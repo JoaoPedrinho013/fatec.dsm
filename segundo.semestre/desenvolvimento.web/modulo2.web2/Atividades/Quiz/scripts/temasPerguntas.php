@@ -32,55 +32,55 @@ $quiz = [
         [
             'pergunta' => 'Quantos corpos Pain realmente possui?',
             'opcoes' => ['6', '5', '9', '8'],
-            'resposta_correta' => '6'
+            'resposta' => '6'
         ],
         [
             'pergunta' => 'Qual é a verdadeira identidade de Tobi?',
             'opcoes' => ['Obito Uchiha', 'Madara Uchiha', 'Sasuke Uchiha', 'Kakashi'],
-            'resposta_correta' => 'Obito Uchiha'
+            'resposta' => 'Obito Uchiha'
         ],
         [
             'pergunta' => 'Qual jinchuuriki possui duas caudas e é amigo de Killer Bee?',
             'opcoes' => ['Yugito Nii', 'Gaara', 'Roshi', 'Fuu'],
-            'resposta_correta' => 'Yugito Nii'
+            'resposta' => 'Yugito Nii'
         ],
         [
             'pergunta' => 'Qual é a técnica proibida que Orochimaru queria usar em Sasuke?',
             'opcoes' => ['Edo Tensei', 'Fuinjutsu de Imortalidade', 'Selo Cursed', 'Kinjutsu da Vida Eterna'],
-            'resposta_correta' => 'Fuinjutsu de Imortalidade'
+            'resposta' => 'Fuinjutsu de Imortalidade'
         ],
         [
             'pergunta' => 'Quem salvou os Cinco Kages depois de serem derrotados por Madara?',
             'opcoes' => ['Orochimaru', 'Naruto e Sasuke', 'Tsunade', 'Kakashi'],
-            'resposta_correta' => 'Orochimaru'
+            'resposta' => 'Orochimaru'
         ]
     ],
 
     "Boruto: Two Blue Vortex" => [
         [
-            'pergunta' => ' Quem é Kawaki? ',
+            'pergunta' => 'Quem é Kawaki?',
             'opcoes' => ['Encarnação de Isshiki Õtsutsuki', 'Filho de Naruto com Hinata', 'Nenhuma das opções', 'Futuro receptáculo de Isshiki Õtsutsuki'],
-            'resposta_correta' => 'Futuro receptáculo de Isshiki Õtsutsuki'
+            'resposta' => 'Futuro receptáculo de Isshiki Õtsutsuki'
         ],
         [
-            'pergunta' => 'Quem é o atual hokage em Boruto? ',
+            'pergunta' => 'Quem é o atual hokage em Boruto?',
             'opcoes' => ['Tsunade', 'Kakashi', 'Shikamaru', 'Konohamaru'],
-            'resposta_correta' => 'Shikamaru'
+            'resposta' => 'Shikamaru'
         ],
         [
-            'pergunta' => 'Quem é o principal suspeito de matar Naruto de acordo com os moradores da Vila da Folha? ',
+            'pergunta' => 'Quem é o principal suspeito de matar Naruto de acordo com os moradores da Vila da Folha?',
             'opcoes' => ['Kawaki', 'Boruto', 'Sasuke', 'Momoshiki'],
-            'resposta_correta' => 'Boruto'
+            'resposta' => 'Boruto'
         ],
         [
-            'pergunta' => 'Quem fez o Sasuke perder o Rinnegan? ',
+            'pergunta' => 'Quem fez o Sasuke perder o Rinnegan?',
             'opcoes' => ['Momoshiki Õtsutsuki', 'Boruto Uzumaki', 'Ele ainda possui o Rinnegan', 'Isshiki Õtsutsuki'],
-            'resposta_correta' => 'Momoshiki Õtsutsuki'
+            'resposta' => 'Momoshiki Õtsutsuki'
         ],
         [
             'pergunta' => 'Qual Shinju foi derrotado pela Sarada Uchiha?',
             'opcoes' => ['Juura', 'Hidari', 'Ryuu', 'Matsuri'],
-            'resposta_correta' => 'Ryuu'
+            'resposta' => 'Ryuu'
         ]
     ]
 ];
