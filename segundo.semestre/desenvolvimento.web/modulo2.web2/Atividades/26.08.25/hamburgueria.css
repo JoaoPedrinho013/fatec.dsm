@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background-image: url("images/logo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.form {
+    background-color: white;
+    width: 25%;
+    height: auto;
+    border-radius: 5%;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black;
+    margin: 5%;
+}
+
+h1 {
+    margin-bottom: 5%;
+}
+
+h2 {
+    margin-bottom: 5%;
+    color: orangered;
+
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input,
+select {
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.botao {
+    padding: 3%;
+    background-color: orangered;
+    font-weight: bold;
+    color: white;
+    margin-top: 2%;
+}
+
+.resumoPedido {
+    background-color: rgb(255, 198, 192);
+    width: 25%;
+    height: auto;
+    border-radius: 5%;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black;
+    margin: 5%;
+}
+
+.resumoPedido > p {
+    margin: 0.3em 0;
+    font-size: 1em;
+}
+.resumoPedido >p> strong {
+    font-size: 1.2em;
+
+}
