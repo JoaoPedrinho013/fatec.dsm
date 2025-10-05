@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons-index">
+            <button onclick="location.href='login.php'" class="active">Entrar</button>
+            <button onclick="location.href='register.php'">Cadastrar</button>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.buttons-index button');
+
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+            });
+
+            button.addEventListener('mouseleave', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                buttons[0].classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

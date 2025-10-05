@@ -1,0 +1,101 @@
+/* ======= Layout principal ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #f4f4f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+}
+
+/* ======= Card principal ======= */
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 25%;
+    text-align: center;
+}
+
+/* ======= Botões Sign in / Sign up ======= */
+.buttons-index {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.buttons-index button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.buttons-index button.active {
+    background: linear-gradient(90deg, rgb(50, 50, 50), rgb(90, 90, 90));
+    color: white;
+}
+
+/* ======= Área onde os formulários são carregados ======= */
+#content-area {
+    text-align: center;
+}
+
+/* ======= Formulários ======= */
+div > h2 {
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+label {
+    font-size: 0.9em;
+    color: #333;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.welcome-text{
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+/* ======= Botão principal ======= */
+.btn-primary, button[type=submit] {
+    background: linear-gradient(90deg, rgb(50, 50, 50), rgb(90, 90, 90));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover, button[type=submit]:hover {
+    opacity: 0.85;
+}
+
+/* ======= Mensagem de erro ======= */
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
