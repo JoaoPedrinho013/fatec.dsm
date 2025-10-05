@@ -18,15 +18,19 @@ Este projeto é um sistema simples de login e cadastro feito em **PHP**, com **H
 
 <div align="center">
 
-  <img src="img/home.png" alt="Tela Inicial" width="400"/>
-  <img src="img/login.png" alt="Tela de Login" width="400"/>
+  
+  <img src="img/home.png" alt="Tela Inicial" title="Tela Inicial" width="400"/>
+  <img src="img/login.png" alt="Tela de Login" title="Tela de Login" width="400"/>
 
-  <img src="img/register.png" alt="Tela de Cadastro" width="400"/>
-  <img src="img/user.png" alt="Tela de Usuário" width="400"/>
+  
+  <img src="img/register.png" alt="Tela de Cadastro" title="Tela de Cadastro" width="400"/>
+  <img src="img/user.png" alt="Tela de Usuário" title="Tela de Usuário" width="400"/>
 
-  <img src="img/error.png" alt="Tela de Erro" width="800"/>
+  
+  <img src="img/error.png" alt="Tela de Erro" title="Tela de Erro" width="800"/>
 
 </div>
+
 
 
 ---
