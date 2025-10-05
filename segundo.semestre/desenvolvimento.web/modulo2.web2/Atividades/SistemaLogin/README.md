@@ -1,6 +1,6 @@
 # Sistema de Login e Cadastro em PHP
 
-Este projeto é um sistema simples de login e cadastro feito em **PHP**, com **HTML e CSS**.
+Este projeto é um sistema simples de login e cadastro feito em **PHP**, com **HTML, CSS e JAVASCRIPT**.
 
 ---
 
@@ -41,6 +41,7 @@ Este projeto é um sistema simples de login e cadastro feito em **PHP**, com **H
 - PHP  
 - HTML5  
 - CSS3
+- JAVASCRIPT
 
 ---
 
