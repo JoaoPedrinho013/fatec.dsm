@@ -1,0 +1,45 @@
+-- 1. Crie um bloco anônimo que informe um número e verifique se o número é par ou ímpar;
+DECLARE
+  V_NUMERO INTEGER := :NUMERO;
+BEGIN
+  IF MOD(V_NUMERO, 2) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('O NÚMERO '|| V_NUMERO ||' É PAR!');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('O NÚMERO '|| V_NUMERO ||' É IMPAR!');
+  END IF;
+END;
+
+-- 2. Criar uma tabela chamada números com a coluna número INTEGER.
+--    Criar um bloco que insira números de 1 a 10, excluindo os números 6 e 8
+
+CREATE TABLE NUMEROS (NUMERO INTEGER);
+
+BEGIN
+    DELETE FROM NUMEROS;
+    COMMIT;
+    FOR NUM IN 1..10 LOOP
+        IF NUM != 6 THEN
+            IF NUM !=8 THEN
+                INSERT INTO NUMEROS VALUES (NUM);
+            END IF;
+        END IF;
+    END LOOP;
+    COMMIT;
+END;
+
+SELECT * FROM NUMEROS;
+
+-- 3. Criar um bloco anônimo que informe um número de 1 a 10 e exiba a tabuada.
+--    Obs. Deve ter uma restrição para aceitar somente números de 1 a 10.
+
+DECLARE
+  V_MULTIPLICADOR INTEGER := :NUMERO;
+BEGIN
+  IF V_MULTIPLICADOR >= 1 THEN
+    IF V_MULTIPLICADOR <= 10 THEN
+        FOR NUM IN 1..10 LOOP
+            DBMS_OUTPUT.PUT_LINE(NUM || 'x' || V_MULTIPLICADOR || ' = ' || (NUM * V_MULTIPLICADOR));
+        END LOOP;
+    END IF;
+  END IF;
+END;
