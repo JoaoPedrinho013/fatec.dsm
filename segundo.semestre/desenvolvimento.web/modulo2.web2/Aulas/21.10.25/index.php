@@ -15,6 +15,7 @@ $avaliacoes = $query->fetchAll();
 </head>
 <body>
     <h1>Avalições</h1>
+    <p><a href="login.php">Login</a></p>
     <a href="create.php">Nova Avalição</a>
     <table>
         <tr>
