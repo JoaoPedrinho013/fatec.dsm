@@ -1,0 +1,97 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: 100vh;
+    /* Removido display:flex global para não quebrar outras páginas */
+}
+
+/* Seção de login */
+.login-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem; /* espaço maior */
+}
+
+/* Container do formulário */
+.login-container {
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* garante empilhamento vertical */
+    gap: 1rem; /* espaçamento interno entre elementos */
+}
+
+/* Título */
+.login-title {
+    color: #ff5722;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Inputs */
+.login-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #ff5722;
+}
+
+/* Botão submit */
+.login-submit {
+    width: 100%;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.login-submit:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+}
+
+/* Textos e links */
+.login-text {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.login-text a {
+    color: #ff5722;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-text a:hover {
+    color: #e64a19;
+}

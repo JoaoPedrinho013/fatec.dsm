@@ -1,0 +1,418 @@
+/* RESET E GLOBAL */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3E4449;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+}
+
+.header .logo {
+    height: 120px;
+    width: auto;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navegacao {
+    display: flex;
+    gap: 2rem;
+}
+
+.navegacao a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.navegacao a:hover {
+    color: #ff5722;
+    text-decoration: overline;
+}
+
+/* Admin Info no header */
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-perfil {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* espaço entre foto e nome */
+    cursor: default; /* remove o cursor de link */
+    text-decoration: none; /* remove underline se tiver */
+}
+
+
+.admin-foto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.admin-nome {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+
+.admin-foto {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff5722;
+}
+
+.btn-logout,
+.form-btn {
+    display: inline-block;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.main_dashboard_admin {
+    min-height: 60dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-logout:hover,
+.form-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+/* ==============================
+   DASHBOARD GERAL
+   ============================== */
+.dashboard-body {
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+/* Informações do usuário */
+.user-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.user-foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff5722;
+}
+
+.user-nome,
+.user-email {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Grid do dashboard */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 2em auto;
+}
+
+/* Boxes clicáveis */
+.dashboard-box {
+    background-color: #3E4449;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.dashboard-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #ff5722;
+}
+
+/* ==============================
+   TABELAS DO DASHBOARD
+   ============================== */
+.tabela-dashboard {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.tabela-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tabela-dashboard th,
+.tabela-dashboard td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Cabeçalho da tabela */
+.tabela-dashboard th {
+    background-color: #3E4449;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Linhas alternadas */
+.tabela-dashboard tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Títulos das tabelas */
+.tabela-dashboard h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Ações da tabela (botão adicionar) */
+.tabela-actions {
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+/* ==============================
+   BOTÕES
+   ============================== */
+a.button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-right: 5px;
+}
+
+/* Botão adicionar preto (igual ao de usuários) */
+a.button.add.black,
+#tabela-usuarios .button.add {
+    background-color: #3E4449;
+    margin-bottom: 1em;
+    color: #fff;
+    float: right;
+}
+
+a.button.add.black:hover,
+#tabela-usuarios .button.add:hover {
+    background-color: #333;
+}
+
+a.button.edit {
+    background-color: #3E4449;
+}
+
+a.button.edit:hover {
+    background-color: #333;
+}
+
+a.button.delete {
+    background-color: #f44336;
+}
+
+a.button.delete:hover {
+    background-color: #d32f2f;
+}
+
+/* ==============================
+   ESTILOS ESPECÍFICOS
+   ============================== */
+
+/* Texto longo com "..." e tooltip */
+.td-truncate {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.td-truncate:hover {
+    overflow: visible;
+    white-space: normal;
+    background: #fff8dc;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Miniaturas de imagens (usuários e serviços) */
+.img-miniatura {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Preço (para tabelas que têm valor monetário) */
+.td-preco {
+    font-weight: bold;
+    color: #ff5722;
+}
+
+/* ==============================
+   RESPONSIVO
+   ============================== */
+@media (max-width: 768px) {
+    .td-truncate {
+        max-width: 120px;
+    }
+    .img-miniatura {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+/* FOOTER */
+.footer {
+    background-color: #3E4449;
+    padding: 3rem 2rem 1rem;
+    color: #fff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.contato h2,
+.footer-form h2 {
+    color: #ff5722;
+    margin-bottom: 1.5rem;
+}
+
+.contato p {
+    color: #fff;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.contato a {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    transition: color 0.3s;
+}
+
+.contato a:hover {
+    color: #ff5722;
+}
+
+.footer-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.footer-form input,
+.footer-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.footer-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.direitos {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .header-desktop {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .user-foto {
+        width: 80px;
+        height: 80px;
+    }
+}

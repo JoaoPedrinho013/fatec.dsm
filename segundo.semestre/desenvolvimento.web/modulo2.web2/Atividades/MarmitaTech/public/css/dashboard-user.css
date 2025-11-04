@@ -1,0 +1,265 @@
+/* RESET E GLOBAL */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3E4449;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Main Dashboard Usuário */
+.main_dashboard_user {
+    min-height: 60dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.dashboard-user-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* Card do Usuário */
+.dashboard-user-info {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    width: 100%;
+}
+
+.dashboard-user-info img.dashboard-user-foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff5722;
+    margin-bottom: 1rem;
+}
+
+.dashboard-user-info p {
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+/* Tabela de Avaliações do Usuário */
+.dashboard-user-tabela {
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-user-tabela h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.dashboard-user-tabela table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-user-tabela th,
+.dashboard-user-tabela td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.dashboard-user-tabela th {
+    background-color: #3E4449;
+    color: #fff;
+    font-weight: 600;
+}
+
+.dashboard-user-tabela tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+a.dashboard-user-button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-right: 5px;
+}
+
+a.dashboard-user-button-delete {
+    background-color: #f44336;
+}
+
+a.dashboard-user-button-delete:hover {
+    background-color: #d32f2f;
+}
+
+/* Texto longo truncado com tooltip */
+.dashboard-user-td-truncate {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dashboard-user-td-truncate:hover {
+    overflow: visible;
+    white-space: normal;
+    background: #fff8dc;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Estrelas */
+.dashboard-user-star {
+    color: #FFD700;
+}
+
+/* Botões do dashboard usuário */
+.dashboard-user-button-edit,
+.dashboard-user-button-save,
+.dashboard-user-button-cancel {
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Botão Editar */
+.dashboard-user-button-edit {
+    background-color: #3E4449;
+}
+
+.dashboard-user-button-edit:hover {
+    background-color: #333;
+}
+
+/* Botão Salvar */
+.dashboard-user-button-save {
+    background-color: #4CAF50;
+}
+
+.dashboard-user-button-save:hover {
+    background-color: #388E3C;
+}
+
+/* Botão Cancelar */
+.dashboard-user-button-cancel {
+    background-color: #f44336;
+}
+
+.dashboard-user-button-cancel:hover {
+    background-color: #d32f2f;
+}
+
+/* Formulário de edição */
+#edit-form-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 1.5rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+}
+
+#edit-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#edit-form label {
+    display: block;
+    margin: 0.5rem 0 0.3rem 0;
+    font-weight: bold;
+}
+
+#edit-form select,
+#edit-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+#edit-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .dashboard-user-info {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .dashboard-user-tabela {
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+
+    .dashboard-user-td-truncate {
+        max-width: 120px;
+    }
+
+     #edit-form-container {
+        padding: 1rem;
+    }
+
+    #edit-form textarea {
+        min-height: 60px;
+    }
+}

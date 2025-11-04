@@ -1,0 +1,130 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Seção de cadastro */
+.cadastro-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* começar abaixo do header */
+    padding: 4rem 2rem; /* espaço do header */
+    padding-bottom: 6rem; /* espaço para footer */
+}
+
+/* Container do formulário */
+.cadastro-container {
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Título */
+.cadastro-title {
+    color: #ff5722;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Inputs */
+.cadastro-form {
+    display: flex;
+    flex-direction: column; /* garante coluna */
+    gap: 1rem;
+}
+
+.cadastro-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.cadastro-input:focus {
+    outline: none;
+    border-color: #ff5722;
+}
+
+/* Botão submit */
+.cadastro-submit {
+    width: 100%;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.cadastro-submit:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+}
+/* Botão voltar */
+
+.button-voltar{
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-decoration: none;
+    width: 100%;
+}
+.button-voltar:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,87,34,0.4);
+}
+
+/* Textos e links */
+.cadastro-text {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.cadastro-text a {
+    color: #ff5722;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.cadastro-text a:hover {
+    color: #e64a19;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .cadastro-section {
+        padding: 2rem 1rem;
+    }
+
+    .cadastro-container {
+        padding: 2rem 1rem;
+    }
+}
