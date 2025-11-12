@@ -32,20 +32,18 @@ public:
     int Saida()
     {
         int auxiliar = VET[0];
-         if (ProximaPosicaoLivre > 0)
+        if (ProximaPosicaoLivre > 0)
         {
 
-        for (int indice = 0; indice < MAX; indice++)
-        {
-            VET[indice] = VET[indice + 1];
-        }
+            for (int indice = 0; indice < MAX; indice++)
+            {
+                VET[indice] = VET[indice + 1];
+            }
 
-       
             ProximaPosicaoLivre--;
             return auxiliar;
         }
-        else
-            return -1;
+        else return -1;
     }
 };
 
