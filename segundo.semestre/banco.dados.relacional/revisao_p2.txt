@@ -1,0 +1,237 @@
+1- Criar uma function chamada FNC_DEPARTAMENTO que de acordo com o sg_departamento, retorne o nome do departamento 
+
+CREATE OR REPLACE FUNCTION FNC_DEPARTAMENTO(P_SG_DEPARTAMENTO IN CHAR) 
+
+RETURN VARCHAR IS 
+
+   V_NOME_DEPARTAMENTO 
+
+DEPARTAMENTO.NM_DEPARTAMENTO%TYPE; 
+
+BEGIN 
+
+   SELECT NM_DEPARTAMENTO 
+
+   INTO V_NOME_DEPARTAMENTO 
+
+   FROM DEPARTAMENTO 
+
+   WHERE SG_DEPARTAMENTO = P_SG_DEPARTAMENTO; 
+
+RETURN V_NOME_DEPARTAMENTO; 
+
+END; 
+
+ 
+
+2- Criar uma procedure PRC_CADASTRA_EQUIPAMENTO que cadastre um novo equipamento na tabela EQUIPAMENTO 
+
+create or replace procedure PRC_CADASTRA_EQUIPAMENTO 
+
+	v_cd_equipamento	IN EQUIPAMENTO.cd_equipamento%TYPE; 
+
+	v_nm_equipamento	IN EQUIPAMENTO.nm_equipamento%TYPE; 
+
+	v_vl_equipamento	IN EQUIPAMENTO.vl_equipamento%TYPE; 
+
+IS 
+
+BEGIN 
+
+	INSERT INTO EQUIPAMENTO(cd_equipamento, nm_equipamento, vl_equipamento) VALUES (v_cd_equipamento, v_nm_equipamento, v_vl_equipamento); 
+
+END; 
+
+ 
+
+3- Criar uma procedure PRC_EXIBE_EQUIPAMENTO que informe o codigo do equipamento e exiba o nome e o valor do equipamento 
+
+CREATE OR REPLACE PRECEDURE PRC_EXIBE_EQUIPAMENTO(V_CD_EQUIPAMENTO IN INTEGER) IS 
+
+V_NOME_EQUIPAMENTO EQUIPAMENTO.NM_EQUIPAMENTO%TYPE; 
+
+V_VALOR_EQUIPAMENTO EQUIPAMENTO.VL_EQUIPAMENTO%TYPE; 
+
+BEGIN 
+
+  SELECT E.NM_EQUIPAMENTO, E.VL_EQUIPAMENTO  
+
+  INTO V_NOME_EQUIPAMENTO, V_VALOR_EQUIPAMENTO 
+
+  FROM EQUIPAMENTO 
+
+  WHERE E.CD_EQUIPAMENTO = V_CD_EQUIPAMENTO; 
+
+  DBMS_OUTPUT.PUT_LINE('EQUIPAMENTO: ' || V_NOME_EQUIPAMENTO || 'E O VALOR: ' || V_VALOR_EQUIPAMENTO); 
+
+END; 
+
+ 
+
+4- Criar a especificação de um pacote com o nome desejado contendo a procedure PRC_EXIBE_EQUIPAMENTO 
+
+ 
+
+CREATE OR REPLACE PACKAGE pk_equipamento 
+
+AS 
+
+	PROCEDURE PRC_EXIBE_EQUIPAMENTO(p_cd_equipamento IN EQUIPAMENTO.cd_equipamento%TYPE); 
+
+ 
+
+END; 
+
+ 
+
+ 
+
+5- Crie um bloco anônimo que entre com a data da emissão de compra e exiba o nome do departamento e o valor total solicitação compra 
+
+DECLARE 
+
+dt_emissao_compra DATE := :DATA; 
+
+nm_depto DEPARTAMENTO.nm_departamento%TYPE; 
+
+vl_total_sc SOLICITACAO_COMPRA.vl_total_solicitacao_compra%TYPE; 
+
+CURSOR c1 IS 
+
+	SELECT d.nm_departamento, sc.vl_total_solicitacao_compra 
+
+	FROM departamentos d JOIN solicitacao_compra sc 
+
+	USING (sg_departamento) 
+
+	WHERE dt_emissao = sc.dt_emissao_compra;  
+
+BEGIN 
+
+OPEN c1; 
+
+		LOOP 
+
+			FETCH c1 INTO nm_depto, vl_total_sc; 
+
+			EXIT WHEN c1%NOTFOUND; 
+
+			DBMS_OUTPUT.PUT_LINE('Data de emissão: ' || dt_emissao_compra || ' | Nome do departamento: ' || nm_depto || ' | Valor total da solicitação compra: ' || vl_total_sc); 
+
+		END LOOP; 
+
+	CLOSE c1; 
+
+	 
+
+END; 
+
+ 
+
+6- Crie um bloco anônimo que entre com o codigo da solicitação da compra e exiba o nome do departamento e a data de emissão. 
+
+DECLARE 
+
+	v_cd_sol INTEGER := :cd_emissao; 
+
+        	v_nome_depto DEPARTAMENTO.nm_departamento%TYPE; 
+
+	v_dt_emissao SOLICITACAO_COMPRA.dt_emissao%TYPE; 
+
+	BEGIN 
+
+		SELECT d.nm_departamento, s.dt_emissao_compra  
+
+INTO v_nome_depto, v_dt_emissao FROM DEPARTAMENTO d 
+
+		JOIN SOLICITACAO_COMPRA s USING(sg_departamento) 
+
+		WHERE s.cd_solicitacao_compra = v_cd_sol; 
+
+		DBMS_OUTPUT.PUT_LINE('Nome do departamento: ' || v_nome_depto || char(13) || 'Data de emissão da solicitação: ' || v_dt_emissao); 
+
+	END;	 
+
+ 
+
+ 
+
+7- Crie um bloco anônimo que entre com o codigo do equipamento e exiba o nome dos departamentos e o nome do equipamento que solicitado. 
+
+DECLARE 
+
+ v_codigo	EQUIPAMENTO.CD_EQUIPAMENTO%TYPE	:= :CODIGO; 
+
+ v_nm_dep	DEPARTAMENTO.NM_DEPARTAMENTO%TYPE; 
+
+ v_nm_equip	EQUIPAMENTO.NM_EQUIPAMENTO%TYPE; 
+
+BEGIN 
+
+ SELECT e.nm_equipamento, d.nm_departamento  
+
+  INTO v_nm_equip, v_nm_dep 
+
+ FROM equipamento e, departamento d, item_solicitacao_compra i, solicitacao_compra s 
+
+ WHERE e.cd_equipamento = i.cd_equipamento  
+
+AND i.cd_solicitacao_compra = s.cd_solicitacao_compra  
+
+AND s.cd_solicitacao_compra = d.sg_departamento  
+
+AND e.cd_equipamento = v_codigo; 
+
+ DBMS_OUTPUT.PUT_LINE('Equipamento: '||v_nm_equip||' Departamento: '||v_nm_dep); 
+
+END; 
+
+ 
+
+8- Executar a procedure PRC_CADASTRA_EQUIPAMENTO e cadastre um novo equipamento 
+
+BEGIN 
+
+	PRC_CADASTRA_EQUIPAMENTO(1, 'Monitor', 1300); 
+
+END; 
+
+ 
+
+9- Executar a procedure PRC_EXIBE_EQUIPAMENTO que exiba os dados do codigo 2026 
+
+BEGIN 
+
+	PRC_EXIBE_EQUIPAMENTO(100); 
+
+END; 
+
+ 
+
+10- Exibir o codigo da procedure criada. 
+
+     SELECT text FROM user_source WHERE name = ' PRC_EXIBE_EQUIPAMENTO'  
+
+    
+
+11- Exibir o nome de todas as functions existentes. 
+
+SELECT object_name from user_objects WHERE object_type = 'FUNCTION';  
+
+ 
+
+12- Exibir todas as packages que o usuário tem acesso 
+
+	SELECT object_name from user_objects WHERE object_type = 'PACKAGE'; 
+
+ 
+
+13- Exibir todas as procedures que o usuário tem acesso 
+
+	SELECT object_name from user_objects WHERE object_type = 'PROCEDURE’; 
+
+ 
+
+ 
+
+ 
