@@ -1,0 +1,54 @@
+Introdução:
+	Primeiramente, gostaríamos de apresentar o nosso grupo e o projeto desenvolvido: uma aplicação web criada para facilitar o controle de gastos relacionados ao transporte para a faculdade.
+
+
+Problemática:
+	Muitas vezes, o controle dos gastos com transporte é feito manualmente, o que pode gerar:
+	Erros em cálculos
+	Falta de organização
+	Dificuldade para acompanhar quanto já foi pago
+	Dúvidas sobre quanto ainda falta pagar
+	Diante disso, surgiu a necessidade de criar uma solução prática, simples e automatizada.
+
+
+Solução:
+	Desenvolvemos um site que oferece:
+	Um calendário interativo para marcar, com apenas um clique, os dias em que a pessoa foi à faculdade
+	Organização dos pagamentos realizados
+	Cálculo automático da ajuda de combustível
+	Resumo completo dos valores gastos
+	Tudo isso de forma simples e intuitiva.
+
+
+Como funciona:
+	1- O usuário digita o valor gasto por pessoa.
+		O total é calculado automaticamente com base na quantidade de pagantes.
+	2- Marca no calendário os dias em que foi à faculdade.
+	3- Informa, na aba de pagamentos, o valor que já foi pago.
+	4- O sistema gera automaticamente um resumo com:
+		Total já pago
+		Valor restante
+		Total gasto no mês
+		Total acumulado no ano
+
+
+Lógica:
+	Total por dia = valor inserido × quantidade de pagantes
+	Total do mês = quantidade de dias marcados × valor do dia
+	Ajuda com combustível funciona como crédito:
+		Pode ser abatida do valor devido
+		Ou utilizada como saldo para o próximo mês
+
+
+Tecnologias: 
+	HTML, CSS e JS. 
+	O design, as cores e as fontes foram inspirados no macOS Dark Mode, buscando uma interface moderna, minimalista e confortável visualmente.
+
+
+Conclusão: 
+	Este é um aplicativo simples e eficiente, que:
+	Não utiliza servidor
+	Funciona diretamente no navegador
+	Salva todos os dados no localStorage, garantindo persistência das informações
+
+
