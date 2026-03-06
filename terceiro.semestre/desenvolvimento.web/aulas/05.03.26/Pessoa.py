@@ -22,11 +22,12 @@ class Aluno(Pessoa):
         print(f'Aluno: {self.nome} - Idade: {self.idade} - Matricula: {self.matricula} - Curso: {self.curso}')
 
 
-
 a1 = Aluno("Lula", 22, "001", "DSM")
 a1.__str__()
 
 print("=-=" * 25)
+
+
 
 p1 = Pessoa("Azien", "13")
 p2 = Pessoa("Kaya", "22")
