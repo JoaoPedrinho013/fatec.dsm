@@ -1,0 +1,20 @@
+-- Criar banco
+CREATE DATABASE fornecedores;
+
+-- Criar tabela Empresa
+CREATE TABLE empresa (
+    id SERIAL PRIMARY KEY,
+    cnpj VARCHAR(18) NOT NULL,
+    razao_social VARCHAR(255) NOT NULL,
+    nome_fantasia VARCHAR(255),
+    logradouro VARCHAR(255)
+);
+
+-- Criar tabela Socio
+CREATE TABLE socio (
+    id SERIAL PRIMARY KEY,
+    nome_socio VARCHAR(255) NOT NULL,
+    cnpj_cpf_do_socio VARCHAR(18) NOT NULL,
+    qualificacao_socio VARCHAR(255),
+    empresa_id INT REFERENCES empresa(id)
+);

@@ -1,0 +1,75 @@
+package br.edu.fatecpg.consumoapi.model;
+
+import java.util.ArrayList;
+
+public class Empresa {
+    private int id;
+    private String cnpj;
+    private String razao_social;
+    private String nome_fantasia;
+    private String logradouro;
+    private ArrayList<Socio> qsa;
+
+    public Empresa(String cnpj, String razao_social, String nome_fantasia, String logradouro) {
+        this.cnpj = cnpj;
+        this.razao_social = razao_social;
+        this.nome_fantasia = nome_fantasia;
+        this.logradouro = logradouro;
+        this.qsa = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public String getRazao_social() {
+        return razao_social;
+    }
+
+    public String getNome_fantasia() {
+        return nome_fantasia;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public ArrayList<Socio> getQsa() {
+        return qsa;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public void setRazao_social(String razao_social) {
+        this.razao_social = razao_social;
+    }
+
+    public void setNome_fantasia(String nome_fantasia) {
+        this.nome_fantasia = nome_fantasia;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public void setQsa(ArrayList<Socio> qsa) {
+        this.qsa = qsa;
+    }
+
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "logradouro='" + logradouro + '\'' +
+                ", qsa=" + qsa +
+                ", nome_fantasia='" + nome_fantasia + '\'' +
+                ", razao_social='" + razao_social + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                '}';
+    }
+}
