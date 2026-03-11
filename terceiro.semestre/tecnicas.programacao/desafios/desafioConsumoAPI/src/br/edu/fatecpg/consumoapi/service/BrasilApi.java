@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
 public class BrasilApi {
     public static String buscaEmpresa(String cnpj) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://brasilapi.com.br/api/cnpj/v1/"+cnpj)).build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://brasilapi.com.br/api/cnpj/v1/" + cnpj)).build();
 
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());

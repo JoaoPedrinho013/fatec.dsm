@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DB {
     public static Connection connection() throws SQLException{
         try{
-            var jdbcUrl = "jdbc:postgresql://localhost:5432/fornecedores";
+            var jdbcUrl = "jdbc:postgresql://localhost:5432/consumoapi";
             var user = "postgres";
             var password = "p3miiezy";
             return DriverManager.getConnection(jdbcUrl, user, password);
