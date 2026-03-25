@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Mundial · Consulta de Países</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:    #0f1923;
+            --paper:  #f5f0e8;
+            --ocean:  #1a4e6e;
+            --gold:   #c8963e;
+            --muted:  #7a6e5f;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--paper);
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(26,78,110,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(200,150,62,0.07) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='%23b0a090' opacity='0.4'/%3E%3C/svg%3E");
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200,150,62,0.25);
+            border-radius: 4px;
+            padding: 3.5rem 3rem 3rem;
+            max-width: 540px;
+            width: 100%;
+            box-shadow: 0 8px 40px rgba(15,25,35,0.1), 0 1px 0 rgba(255,255,255,0.8) inset;
+            animation: rise 0.7s cubic-bezier(.22,1,.36,1) both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(200,150,62,0.4);
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        h1 span { color: var(--ocean); }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 0.85rem 1.1rem;
+            border: 1.5px solid rgba(15,25,35,0.15);
+            border-radius: 3px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: rgba(255,255,255,0.9);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        input[type="text"]::placeholder { color: #b0a090; }
+
+        input[type="text"]:focus {
+            border-color: var(--ocean);
+            box-shadow: 0 0 0 3px rgba(26,78,110,0.12);
+        }
+
+        button {
+            padding: 0.85rem 1.5rem;
+            background: var(--ocean);
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+
+        button:hover { background: #15395a; }
+        button:active { transform: scale(0.97); }
+
+        .hint {
+            margin-top: 1rem;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .hint strong { color: var(--ink); font-weight: 500; }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(200,150,62,0.3), transparent);
+            margin: 2rem 0 1.5rem;
+        }
+
+        .examples {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .examples a {
+            font-size: 0.78rem;
+            padding: 0.3rem 0.7rem;
+            border: 1px solid rgba(26,78,110,0.25);
+            border-radius: 99px;
+            color: var(--ocean);
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .examples a:hover {
+            background: var(--ocean);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="badge">🌍 Atlas Mundial</div>
+        <h1>Consulta de<br><span>Países</span></h1>
+        <p class="subtitle">Explore informações detalhadas sobre qualquer país do mundo — capital, população, região e muito mais.</p>
+
+        <form action="/buscar" method="get">
+            <div class="search-row">
+                <input type="text" name="pais" placeholder="Ex: Brazil, Japan, Germany…" required autocomplete="off" />
+                <button type="submit">Buscar →</button>
+            </div>
+            <p class="hint">Digite o nome em <strong>inglês</strong> para melhores resultados.</p>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="examples">
+            <span style="font-size:0.78rem;color:var(--muted);align-self:center;">Explorar:</span>
+            <a href="/buscar?pais=Brazil">Brazil</a>
+            <a href="/buscar?pais=Japan">Japan</a>
+            <a href="/buscar?pais=Germany">Germany</a>
+            <a href="/buscar?pais=Egypt">Egypt</a>
+            <a href="/buscar?pais=Canada">Canada</a>
+        </div>
+    </div>
+</body>
+</html>

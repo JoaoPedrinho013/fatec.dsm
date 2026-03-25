@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- BUG FIX #4: xmlns:th é obrigatório para o Thymeleaf processar os atributos th:* -->
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pais.nome != null ? pais.nome.comum : 'Resultado'} + ' · Atlas Mundial'">Resultado · Atlas Mundial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:   #0f1923;
+            --paper: #f5f0e8;
+            --ocean: #1a4e6e;
+            --gold:  #c8963e;
+            --muted: #7a6e5f;
+            --error: #8b2c2c;
+            --error-bg: #fdf0f0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--paper);
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(26,78,110,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(200,150,62,0.07) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='%23b0a090' opacity='0.4'/%3E%3C/svg%3E");
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .topbar {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            animation: rise 0.5s ease both;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--ocean);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover { gap: 0.7rem; }
+
+        .brand {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ── ERROR STATE ── */
+        .error-card {
+            background: var(--error-bg);
+            border: 1px solid rgba(139,44,44,0.25);
+            border-radius: 4px;
+            padding: 2rem 2.5rem;
+            max-width: 540px;
+            width: 100%;
+            text-align: center;
+            animation: rise 0.6s ease both;
+        }
+
+        .error-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .error-card h2 { font-family: 'Playfair Display', serif; color: var(--error); margin-bottom: 0.5rem; }
+        .error-card p { color: var(--muted); font-size: 0.9rem; }
+
+        /* ── RESULT CARD ── */
+        .result-card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200,150,62,0.22);
+            border-radius: 4px;
+            max-width: 700px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 12px 50px rgba(15,25,35,0.1);
+            animation: rise 0.7s cubic-bezier(.22,1,.36,1) both;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2.5rem 2.5rem 2rem;
+            border-bottom: 1px solid rgba(200,150,62,0.18);
+        }
+
+        .flag-wrap {
+            flex-shrink: 0;
+            width: 110px;
+            height: 72px;
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid rgba(15,25,35,0.1);
+            box-shadow: 0 2px 8px rgba(15,25,35,0.12);
+        }
+
+        .flag-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+        .flag-placeholder {
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--ocean) 0%, #0d2d44 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+        }
+
+        .header-text .badge {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(200,150,62,0.4);
+            padding: 0.22rem 0.65rem;
+            border-radius: 2px;
+            margin-bottom: 0.6rem;
+        }
+
+        .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .official-name {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .card-body {
+            padding: 2rem 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .info-block {
+            background: rgba(245,240,232,0.6);
+            border: 1px solid rgba(200,150,62,0.14);
+            border-radius: 3px;
+            padding: 1rem 1.2rem;
+            transition: background 0.15s;
+        }
+
+        .info-block:hover { background: rgba(255,255,255,0.85); }
+
+        .info-label {
+            font-size: 0.67rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .info-value.large {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(200,150,62,0.25), transparent);
+            margin: 1.75rem 0;
+        }
+
+        @media (max-width: 500px) {
+            .card-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .card-body { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <a href="/" class="back-link">← Nova busca</a>
+        <span class="brand">🌍 Atlas Mundial</span>
+    </div>
+
+    <!-- BUG FIX #5: Bloco de erro separado — sem tentar acessar pais.nome quando é null -->
+    <div class="error-card" th:if="${pais.response == 'False'}">
+        <div class="icon">🔍</div>
+        <h2>País não encontrado</h2>
+        <p th:text="${pais.error}">Erro desconhecido.</p>
+    </div>
+
+    <!-- th:unless garante que este bloco SÓ aparece quando NÃO há erro -->
+    <div class="result-card" th:unless="${pais.response == 'False'}">
+
+        <div class="card-header">
+            <div class="flag-wrap">
+                <img th:if="${pais.bandeiras != null}"
+                     th:src="${pais.bandeiras.svg ?: pais.bandeiras.png}"
+                     th:alt="${'Bandeira de ' + pais.nome.comum}" />
+                <div class="flag-placeholder" th:unless="${pais.bandeiras != null}">🏳</div>
+            </div>
+            <div class="header-text">
+                <div class="badge" th:text="${pais.sigla ?: 'País'}">BRA</div>
+                <h1 th:text="${pais.nome.comum}">Nome do País</h1>
+                <p class="official-name" th:text="${pais.nome.oficial}">Nome Oficial</p>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="grid">
+                <div class="info-block">
+                    <div class="info-label">🏛 Capital</div>
+                    <div class="info-value large" th:text="${pais.capital}">–</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">🌎 Região</div>
+                    <div class="info-value" th:text="${pais.regiao}">–</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">📍 Sub-região</div>
+                    <div class="info-value" th:text="${pais.subRegiao}">–</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="grid">
+                <div class="info-block">
+                    <div class="info-label">👥 População</div>
+                    <div class="info-value large"
+                         th:text="${#numbers.formatInteger(pais.populacao, 1, 'POINT')}">–</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">📐 Área (km²)</div>
+                    <div class="info-value large"
+                         th:text="${#numbers.formatDecimal(pais.area, 1, 'POINT', 0, 'COMMA')}">–</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">⚽ Sigla FIFA</div>
+                    <div class="info-value large" th:text="${pais.sigla ?: 'N/A'}">–</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
