@@ -4,22 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block titulo %} {% endblock%}</title>
+    <title>{% block titulo %}Django{% endblock %}</title>
 </head>
 <body>
-    <h1><strong>Django baby</strong></h1>
-         <nav>
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'categoria' %}">Categorias</a>  
-            <a href="{% url 'addcontato' %}">Contato</a>
-        </nav>
-        <br>
-        <header>
-            
-            <main>
-                {% block conteudo%} {% endblock %}
-            </main>
-        </header>
+
+    <header class="site-header">
+        <a href="{% url 'index' %}" class="brand">Django<span>App</span></a>
+    </header>
+
+    <nav>
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'categoria' %}">Categorias</a>
+        <a href="{% url 'contato' %}">Contatos</a>
+        <a href="{% url 'addcontato' %}">Novo Contato</a>
+    </nav>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
 </body>
 </html>

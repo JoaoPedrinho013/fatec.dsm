@@ -1,14 +1,17 @@
 {% extends 'template.html' %}
-{% block titulo %}Add Categoria {% endblock %}
+{% block titulo %}Nova Categoria · DjangoApp{% endblock %}
 
 {% block conteudo %}
-    <h1>Adcionar Categoria</h1>
+<div class="page-header">
+    <h2>Nova Categoria</h2>
+    <a href="{% url 'categoria' %}" class="btn btn-ghost">← Voltar</a>
+</div>
 
+<div class="form-wrapper">
     <form action="{% url 'addcategoria' %}" method="post">
-        <br>
         {% csrf_token %}
-        {{form}}
-        <br>
-        <input type="submit" value="Adcionar">
+        {{ form.as_p }}
+        <input type="submit" value="Adicionar Categoria">
     </form>
+</div>
 {% endblock %}

@@ -1,7 +1,14 @@
 {% extends 'template.html' %}
-{% block titulo %} Django Home {% endblock %}
+{% block titulo %}Home · DjangoApp{% endblock %}
 
-{% block conteudo%}
-    <h1>O JOGO</h1>
- {% endblock %}
-
+{% block conteudo %}
+<div class="home-hero">
+    <h2>Bem-vindo ao DjangoApp</h2>
+    <p>Gerencie suas categorias e contatos de forma simples e rápida.</p>
+    <div class="home-links">
+        <a href="{% url 'categoria' %}" class="btn btn-primary">Ver Categorias</a>
+        <a href="{% url 'contato' %}" class="btn btn-accent">Ver Contatos</a>
+        <a href="{% url 'addcontato' %}" class="btn btn-ghost">+ Novo Contato</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,25 +1,34 @@
 {% extends 'template.html' %}
-{% block titulo %} Django Contatos {% endblock %}
+{% block titulo %}Contatos · DjangoApp{% endblock %}
 
 {% block conteudo %}
-    <div>
-        <h1>Categorias</h1>
-    </div>
+<div class="page-header">
+    <h2>Contatos</h2>
+    <a href="{% url 'addcontato' %}" class="btn btn-primary">+ Adicionar Contato</a>
+</div>
 
-    <div>
-        {% for cont in contatos %}
-        <div>
+<div class="card-list">
+    {% for cont in contatos %}
+    <div class="contact-card">
+        <div class="contact-header">
             <div>
-                <span>{{cont.id}}</span>
-                <span>{{cont.nome}}</span>
-                <span>{{cont.email}}</span>
-                <span>{{cont.assunto}}</span>
-                <span>{{cont.mensagem}}</span>
+                <div class="contact-name">{{ cont.nome }}</div>
+                <div class="contact-email">{{ cont.email }}</div>
             </div>
-            <div>
-                <a href="{% url 'delcontato' cont.id %}">Excluir</a>
+            <div class="card-actions">
+                <a href="{% url 'delcontato' cont.id %}" class="btn btn-danger">✕ Excluir</a>
             </div>
         </div>
-        {% endfor %}
+        <div>
+            <span class="contact-subject">{{ cont.assunto }}</span>
+        </div>
+        <div class="contact-message">{{ cont.mensagem }}</div>
     </div>
+    {% empty %}
+    <div class="empty-state">
+        <p>Nenhum contato cadastrado ainda.</p>
+        <a href="{% url 'addcontato' %}" class="btn btn-primary">+ Adicionar primeiro contato</a>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

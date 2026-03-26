@@ -1,14 +1,17 @@
 {% extends 'template.html' %}
-{% block titulo %}Add Contato {% endblock %}
+{% block titulo %}Novo Contato · DjangoApp{% endblock %}
 
 {% block conteudo %}
-    <h1>Adcionar Contato</h1>
+<div class="page-header">
+    <h2>Novo Contato</h2>
+    <a href="{% url 'contato' %}" class="btn btn-ghost">← Voltar</a>
+</div>
 
+<div class="form-wrapper">
     <form action="{% url 'addcontato' %}" method="post">
-        <br>
         {% csrf_token %}
-        {{form}}
-        <br>
-        <input type="submit" value="Adcionar">
+        {{ form.as_p }}
+        <input type="submit" value="Adicionar Contato">
     </form>
+</div>
 {% endblock %}
