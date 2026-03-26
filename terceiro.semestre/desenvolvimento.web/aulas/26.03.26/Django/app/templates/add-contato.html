@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+{% block titulo %}Add Contato {% endblock %}
+
+{% block conteudo %}
+    <h1>Adcionar Contato</h1>
+
+    <form action="{% url 'addcontato' %}" method="post">
+        <br>
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <input type="submit" value="Adcionar">
+    </form>
+{% endblock %}

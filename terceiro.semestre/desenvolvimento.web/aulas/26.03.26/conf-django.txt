@@ -1,0 +1,51 @@
+Criando ambiente virtual do python
+		
+py -m venv venv - criando a pasta
+
+py -m venv - instrução de criação
+- O segundo venv é o nome da pasta
+
+venv\scripts\activate - para ativar o ambiente virtual
+
+py -m pip install django - para instalar o django
+
+django-admin --verion - verificar se foi instalado
+
+django-admin startproject projeto . - cria a pasta projeto dentro 
+do diretorio atual
+
+ao criar a pasta manage não utiliza mais o django-admin apenas 
+o django-manage
+
+py manage.py runserver - executa o projeto django
+
+py manage.py startapp app - vai criar o aplicativo o aplicativo
+ é um modulo do meu sistema no django trabalhamos com modulos para serem
+usados em outros projetos tbm
+
+
+Estrutura: Dentro do projeto arquivos serie adiciona o app que é o 
+aplicativo q criei para acessar tem que ir na urls no projeto e incluir
+ o app.urls para eu conseguir acessar todas as rotas criadas no 
+aplicativo quando inclui o app.urls significa q o projeto vai acessar 
+ele mas ainda n exise então vai no app e cria o arquivos url no 
+arquivos url no app cria a rota principal que vai ser carregada que 
+aponta para a views.index que vai acessa a função index q foi criada 
+dentro do templates
+
+Ao utilizar o CharField é obrigatorio colocar o max_length
+
+py manage.py makemigrations - faz a migração do banco
+
+py manage.py shell - vai permitir popular a tabela categoria utilizando o 
+prompt
+
+from app.models import Categoria - aq eu indio que quero q no arquivos models q ele importe a categoria
+
+Categoria.objects.all().values() - Vai devolver todos objetos da categoria
+
+py manage.py migrate - para criar a tabela
+
+c1 = Categoria(nome='Móveis') - Criei uma instancia de categoria 
+
+c1.save() - Salva a instancia no banco de dados

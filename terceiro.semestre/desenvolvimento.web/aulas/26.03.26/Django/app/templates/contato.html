@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+{% block titulo %} Django Contatos {% endblock %}
+
+{% block conteudo %}
+    <div>
+        <h1>Categorias</h1>
+    </div>
+
+    <div>
+        {% for cont in contatos %}
+        <div>
+            <div>
+                <span>{{cont.id}}</span>
+                <span>{{cont.nome}}</span>
+                <span>{{cont.email}}</span>
+                <span>{{cont.assunto}}</span>
+                <span>{{cont.mensagem}}</span>
+            </div>
+            <div>
+                <a href="{% url 'delcontato' cont.id %}">Excluir</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
