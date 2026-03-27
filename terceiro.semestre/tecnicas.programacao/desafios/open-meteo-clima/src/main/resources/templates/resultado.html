@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Clima</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --surface-2: #f7fafc;
+            --border: #d6e0ea;
+            --text-primary: #1e2d3d;
+            --text-secondary: #6b8499;
+            --accent: #4a90b8;
+            --accent-light: #e8f3fa;
+            --error: #5a8a9f;
+            --error-bg: #eef5f9;
+            --shadow: 0 2px 24px rgba(74, 144, 184, 0.08);
+            --shadow-hover: 0 6px 32px rgba(74, 144, 184, 0.14);
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(74, 144, 184, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(100, 170, 210, 0.05) 0%, transparent 50%);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Back link ── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            margin-bottom: 1.4rem;
+            transition: color 0.2s;
+        }
+
+        .back-link svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ── Card Header ── */
+        .card-header {
+            background: linear-gradient(135deg, #daeaf5 0%, #c8dff0 100%);
+            padding: 2rem 2.4rem 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .weather-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .weather-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .header-text {}
+
+        .temp-display {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .weather-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-top: 0.3rem;
+        }
+
+        /* ── Card Body ── */
+        .card-body {
+            padding: 1.8rem 2.4rem 2rem;
+        }
+
+        /* ── Data Grid ── */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+        }
+
+        .data-item {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+        }
+
+        .data-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .data-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+        }
+
+        .data-value {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 1.4rem 0;
+        }
+
+        /* ── Error state ── */
+        .error-card {
+            background: var(--error-bg);
+            border: 1px solid #c8dde8;
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+        }
+
+        .error-icon {
+            width: 22px;
+            height: 22px;
+            stroke: var(--error);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .error-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .error-msg {
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <a href="/" class="back-link">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            Nova busca
+        </a>
+
+        <!-- ── ERRO ── -->
+        <div th:if="${clima.response == 'False'}" class="card">
+            <div class="card-body">
+                <div class="error-card">
+                    <svg class="error-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <div>
+                        <p class="error-title">Localização não encontrada</p>
+                        <p class="error-msg" th:text="${clima.error}">Erro desconhecido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── RESULTADO ── -->
+        <div th:unless="${clima.response == 'False'}" class="card">
+
+            <div class="card-header">
+                <div class="weather-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C8.5 2 5.5 4.5 5 8C3 8.5 1.5 10.2 1.5 12.2C1.5 14.5 3.4 16.5 5.8 16.5H18C20.2 16.5 22 14.7 22 12.5C22 10.4 20.4 8.7 18.3 8.5C17.4 4.8 14.9 2 12 2Z"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <div class="temp-display">
+                        <span th:text="${clima.current.temperature_2m}">--</span>°C
+                    </div>
+                    <div class="weather-label" th:text="${clima.current.descricaoClima}">Condição</div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="data-grid">
+
+                    <div class="data-item">
+                        <div class="data-label">Latitude</div>
+                        <div class="data-value" th:text="${clima.latitude}">--</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">Longitude</div>
+                        <div class="data-value" th:text="${clima.longitude}">--</div>
+                    </div>
+
+                    <div class="data-item full-width">
+                        <div class="data-label">Fuso Horário</div>
+                        <div class="data-value">
+                            <span th:text="${clima.timezone}">--</span>
+                            &nbsp;(<span th:text="${clima.timezone_abbreviation}">--</span>)
+                        </div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">Elevação</div>
+                        <div class="data-value"><span th:text="${clima.elevation}">--</span> m</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">Vento</div>
+                        <div class="data-value"><span th:text="${clima.current.windspeed_10m}">--</span> km/h</div>
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="data-grid">
+                    <div class="data-item full-width">
+                        <div class="data-label">Última Atualização</div>
+                        <div class="data-value" th:text="${clima.current.time}">--</div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-label">Intervalo</div>
+                        <div class="data-value"><span th:text="${clima.current.interval}">--</span> s</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
