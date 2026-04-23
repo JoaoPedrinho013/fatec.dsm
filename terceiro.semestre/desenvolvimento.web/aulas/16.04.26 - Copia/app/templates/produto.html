@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+
+{% block titulo %}Django Produtos{% endblock %}
+
+{% block conteudo %}
+
+<h1>Produtos</h1>
+
+<br><hr>
+<a href="{% url 'addproduto' %}">Adicionar Produto</a><br><br>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for prod in produtos %}
+    <tr>
+        <td>{{ prod.id }}</td>
+        <td>
+            <img src="{{ prod.imagem.url }}" width="50px">
+        </td>
+        <td>{{ prod.nome }}</td>
+        <td>{{ prod.quantidade }}</td>
+        <td>{{ prod.preco }}</td>
+        <td>{{ prod.categoria }}</td>
+        <td> <a href="#">Editar</a>
+             <a href="#">Excluir</a>   
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
