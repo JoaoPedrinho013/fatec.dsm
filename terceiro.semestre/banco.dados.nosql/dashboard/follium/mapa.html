@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7aaf283723a72a1d0d4e199934b00cee {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7aaf283723a72a1d0d4e199934b00cee" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7aaf283723a72a1d0d4e199934b00cee = L.map(
+                "map_7aaf283723a72a1d0d4e199934b00cee",
+                {
+                    center: [-23.989405563151248, -46.40751287046697],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_39b98fc1518f847bb1826f26f7c847c6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_39b98fc1518f847bb1826f26f7c847c6.addTo(map_7aaf283723a72a1d0d4e199934b00cee);
+        
+    
+            var marker_940551ca46e30edee997fe2bb2d36e80 = L.marker(
+                [-24.004904557888242, -46.41226830599094],
+                {
+}
+            ).addTo(map_7aaf283723a72a1d0d4e199934b00cee);
+        
+    
+            var icon_018fc7fe0cc8a32b4a03d49eea8173a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3131509d89481bb754b9e1bdb26aa6b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d052dfcb389e7cdbc3ac5f3ff4c06c0 = $(`<div id="html_1d052dfcb389e7cdbc3ac5f3ff4c06c0" style="width: 100.0%; height: 100.0%;">Fatec PG</div>`)[0];
+                popup_3131509d89481bb754b9e1bdb26aa6b3.setContent(html_1d052dfcb389e7cdbc3ac5f3ff4c06c0);
+            
+        
+
+        marker_940551ca46e30edee997fe2bb2d36e80.bindPopup(popup_3131509d89481bb754b9e1bdb26aa6b3)
+        ;
+
+        
+    
+    
+                marker_940551ca46e30edee997fe2bb2d36e80.setIcon(icon_018fc7fe0cc8a32b4a03d49eea8173a3);
+            
+    
+            var marker_3d2ecddf216d8ff316d6eb6844a83a4a = L.marker(
+                [-24.0059458994018, -46.413400391480984],
+                {
+}
+            ).addTo(map_7aaf283723a72a1d0d4e199934b00cee);
+        
+    
+            var icon_fe751623c4f7104c07d5ad1c1165a490 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b952546acc6033445c6ff31f0c655ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4456a04bbb5c692f61f5a8909594bee = $(`<div id="html_a4456a04bbb5c692f61f5a8909594bee" style="width: 100.0%; height: 100.0%;">Smart Fit PG</div>`)[0];
+                popup_5b952546acc6033445c6ff31f0c655ee.setContent(html_a4456a04bbb5c692f61f5a8909594bee);
+            
+        
+
+        marker_3d2ecddf216d8ff316d6eb6844a83a4a.bindPopup(popup_5b952546acc6033445c6ff31f0c655ee)
+        ;
+
+        
+    
+    
+                marker_3d2ecddf216d8ff316d6eb6844a83a4a.setIcon(icon_fe751623c4f7104c07d5ad1c1165a490);
+            
+    
+            var marker_818b0572ac460d6f1f5525c09a09758b = L.marker(
+                [-23.96879506296125, -46.384774881636154],
+                {
+}
+            ).addTo(map_7aaf283723a72a1d0d4e199934b00cee);
+        
+    
+            var icon_a7df30c9025eb20a7b525745e4ca4181 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78183cbebc6dfbf9414e3a949b7e83f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca730245a1795a6e942a62fd215434a3 = $(`<div id="html_ca730245a1795a6e942a62fd215434a3" style="width: 100.0%; height: 100.0%;">Centro SV</div>`)[0];
+                popup_78183cbebc6dfbf9414e3a949b7e83f6.setContent(html_ca730245a1795a6e942a62fd215434a3);
+            
+        
+
+        marker_818b0572ac460d6f1f5525c09a09758b.bindPopup(popup_78183cbebc6dfbf9414e3a949b7e83f6)
+        ;
+
+        
+    
+    
+                marker_818b0572ac460d6f1f5525c09a09758b.setIcon(icon_a7df30c9025eb20a7b525745e4ca4181);
+            
+    
+            var marker_95f43dc72d38521b8e82691d1efa0f05 = L.marker(
+                [-23.965612789101225, -46.31605670420712],
+                {
+}
+            ).addTo(map_7aaf283723a72a1d0d4e199934b00cee);
+        
+    
+            var icon_91561e5096639e0ad78966be67c6463d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_45fad20945f5d832cf9f996e1a03d9e3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90acb797d5e8f5be5e06ccdf1f1b9b42 = $(`<div id="html_90acb797d5e8f5be5e06ccdf1f1b9b42" style="width: 100.0%; height: 100.0%;">médico Embaré</div>`)[0];
+                popup_45fad20945f5d832cf9f996e1a03d9e3.setContent(html_90acb797d5e8f5be5e06ccdf1f1b9b42);
+            
+        
+
+        marker_95f43dc72d38521b8e82691d1efa0f05.bindPopup(popup_45fad20945f5d832cf9f996e1a03d9e3)
+        ;
+
+        
+    
+    
+                marker_95f43dc72d38521b8e82691d1efa0f05.setIcon(icon_91561e5096639e0ad78966be67c6463d);
+            
+</script>
+</html>
