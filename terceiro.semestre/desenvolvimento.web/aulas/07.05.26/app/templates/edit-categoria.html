@@ -2,7 +2,7 @@
 
 {% block titulo %}Edit Categoria{% endblock %}
 
- {% block conteudo %}
+{% block conteudo %}
 
     <h1>Editar Categoria</h1>
 
@@ -10,11 +10,9 @@
 
     <form method="post">
         {% csrf_token %}
-        {{form}}
+        {{ form.as_p }}
         <br>
         <input type="submit" value="Atualizar">
     </form>
 
- {% endblock %}
-
-
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block titulo %}Add Contato{% endblock %}
 
- {% block conteudo %}
+{% block conteudo %}
 
     <h1>Adicionar Contato</h1>
 
@@ -10,11 +10,9 @@
 
     <form action="{% url 'addcontato' %}" method="post">
         {% csrf_token %}
-        {{form}}
+        {{ form.as_p }}
         <br>
         <input type="submit" value="Adicionar">
     </form>
 
- {% endblock %}
-
-
+{% endblock %}
