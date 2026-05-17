@@ -8,6 +8,12 @@ Usuários comuns podem criar uma conta, consultar todos os livros disponíveis, 
 
 Cada empréstimo dura 5 minutos. Se o usuário não devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque e emite uma notificação. Quando um livro volta a ficar disponível, os usuários que estavam na lista de espera recebem uma notificação dentro da própria aplicação. As notificações podem ser marcadas como lidas ou apagadas.
 
+## Apresentação em Vídeo
+
+[![Assistir no YouTube](https://img.shields.io/badge/YouTube-Assistir%20apresentação-red?logo=youtube)](https://youtu.be/Cr_kBPb9sB0)
+
+https://youtu.be/Cr_kBPb9sB0
+
 ## Requisitos
 
 - Docker instalado e em execução
