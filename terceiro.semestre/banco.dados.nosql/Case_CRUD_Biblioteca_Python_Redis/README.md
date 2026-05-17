@@ -1,77 +1,48 @@
-# Biblioteca Municipal Online
+# Biblioteca Digital
 
-Sistema de Biblioteca Digital desenvolvido com Python, FastAPI, Redis, React e Tailwind CSS.
+Sistema de Biblioteca Digital desenvolvido com Python, Flask, Redis, React e Material UI.
 
-O sistema permite que um administrador gerencie o acervo da Biblioteca Municipal Online, cadastrando, atualizando e removendo livros. Os livros possuem titulo, autor, categoria, ano de publicacao, quantidade disponivel e status.
+O sistema permite que um administrador gerencie o acervo da biblioteca, cadastrando, atualizando e removendo livros. Os livros possuem título, autor, categorias (múltiplas), ano de publicação, quantidade disponível, sinopse e capa.
 
-Usuarios comuns podem criar uma conta, consultar todos os livros disponiveis, pegar livros emprestados, favoritar livros e entrar em uma lista de espera quando um livro estiver sem estoque. Cada usuario pode ter no maximo 3 livros emprestados ao mesmo tempo.
+Usuários comuns podem criar uma conta, consultar todos os livros disponíveis, pegar livros emprestados, favoritar livros e entrar em uma lista de espera quando um livro estiver sem estoque. Cada usuário pode ter no máximo 3 livros emprestados ao mesmo tempo.
 
-Cada emprestimo dura 10 minutos. Se o usuario nao devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque e emitirá uma notificação. Quando um livro volta a ficar disponivel, os usuarios que estavam na lista de espera recebem uma notificacao dentro da propria aplicacao.
+Cada empréstimo dura 5 minutos. Se o usuário não devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque e emite uma notificação. Quando um livro volta a ficar disponível, os usuários que estavam na lista de espera recebem uma notificação dentro da própria aplicação. As notificações podem ser marcadas como lidas ou apagadas.
 
 ## Requisitos
 
-- Python instalado
+- Docker instalado e em execução
 - Node.js instalado
-- Docker instalado
-- Redis rodando via Docker
 
-## Como Rodar o Redis com Docker
+## Como Rodar o Backend e o Redis
 
-Na raiz do projeto, execute:
+O backend Flask e o Redis rodam juntos via Docker Compose. Na raiz do projeto, execute:
 
 ```bash
-docker run --name redis-biblioteca -p 6379:6379 -d redis
+docker compose up -d --build
 ```
 
-Para verificar se o container esta rodando:
+Para verificar se os containers estão rodando:
 
 ```bash
 docker ps
 ```
 
-Se o container ja existir e estiver parado:
+Para parar os containers:
 
 ```bash
-docker start redis-biblioteca
+docker compose down
 ```
 
-## Como Rodar o Backend
+Backend disponível em:
 
-Entre na pasta do backend:
-
-```bash
-cd backend
+```
+http://localhost:5000
 ```
 
-Crie o arquivo `.env` com:
+Documentação da API (Swagger):
 
-```env
-REDIS_HOST=localhost
-REDIS_PORT=6379
 ```
-
-Instale as dependencias necessárias, caso ainda nao tenha instalado:
-
-```bash
-pip install fastapi uvicorn redis python-dotenv
-```
-
-Rode a API:
-
-```bash
-python -m uvicorn main:app --reload
-```
-
-Backend:
-
-```txt
-http://127.0.0.1:8000
-```
-
-Documentacao da API:
-
-```txt
-http://127.0.0.1:8000/docs
+http://localhost:5000/docs/
 ```
 
 ## Como Rodar o Frontend
@@ -82,41 +53,93 @@ Em outro terminal, entre na pasta do frontend:
 cd frontend
 ```
 
-Instale as dependencias:
+Instale as dependências (apenas na primeira vez):
 
 ```bash
-npm i
+npm install
 ```
 
 Rode o frontend:
 
 ```bash
-npm run server
+npm start
 ```
 
-Frontend:
+Frontend disponível em:
 
-```txt
-http://127.0.0.1:5173
+```
+http://localhost:3000
 ```
 
 ## Login Admin
 
-O usuario admin e criado automaticamente quando o backend inicia, caso ainda nao exista no Redis.
+O usuário admin é criado automaticamente quando o backend inicia, caso ainda não exista no Redis.
 
-```txt
+```
 username: admin
 senha: admin
 ```
 
-Atalho:
+## Capas dos Livros
 
-```txt
-admin/admin
+As imagens de capa ficam em `frontend/public/covers/`. O nome do arquivo deve ser o título do livro normalizado: tudo em minúsculo, sem acentos e com espaços substituídos por `_`.
+
+Exemplos:
+
+```
+Dom Casmurro          → dom_casmurro.png
+Harry Potter          → harry_potter.png
+O Senhor dos Anéis    → o_senhor_dos_aneis.png
 ```
 
-## Observacoes
+Formatos aceitos: PNG e JPG. O upload pode ser feito diretamente pelo formulário de cadastro e edição de livros no painel do administrador.
 
-- O backend precisa estar rodando para o frontend consumir a API.
-- O Redis precisa estar rodando antes de iniciar o backend.
-- A documentacao dos endpoints fica disponivel em `/docs`.
+## Modelagem da Base de Dados (Redis)
+
+O banco de dados utilizado é o Redis (db=1), com prefixo `bib2:` em todas as chaves para isolar o projeto de outros que possam usar o mesmo Redis.
+
+### Livros
+
+| Chave | Tipo | Descrição |
+|-------|------|-----------|
+| `bib2:livro:{id}` | Hash | Dados do livro (id, titulo, autor, categoria, ano, quantidade, status, sinopse) |
+| `bib2:livro_id` | String | Contador auto-incremento para geração de IDs |
+| `bib2:livro:{id}:espera` | Set | Usuários na fila de espera pelo livro |
+
+### Usuários
+
+| Chave | Tipo | Descrição |
+|-------|------|-----------|
+| `bib2:usuario:{username}` | Hash | Dados do usuário (username, senha_hash, cargo) |
+| `bib2:usuario:{username}:emprestimos` | Set | IDs dos livros atualmente emprestados |
+| `bib2:usuario:{username}:favoritos` | Set | IDs dos livros favoritados |
+| `bib2:usuario:{username}:espera` | Set | IDs dos livros aguardando disponibilidade |
+| `bib2:usuario:{username}:notificacoes` | List | Notificações do usuário (JSON com mensagem e status de leitura) |
+
+### Empréstimos
+
+| Chave | Tipo | Descrição |
+|-------|------|-----------|
+| `bib2:emprestimo:{username}:{livro_id}` | Hash | Dados do empréstimo (username, livro_id, data, devolucao_em) |
+| `bib2:emprestimos_vencimento` | Sorted Set | Todos os empréstimos ativos ordenados pelo timestamp de vencimento — usado pelo auto-retorno |
+
+### Estrutura de um Livro no Redis
+
+```
+bib2:livro:1
+  id         → "1"
+  titulo     → "Dom Casmurro"
+  autor      → "Machado de Assis"
+  categoria  → "Literatura,Romance"
+  ano        → "1899"
+  quantidade → "3"
+  status     → "Disponivel"
+  sinopse    → "..."
+```
+
+## Observações
+
+- O backend e o Redis precisam estar rodando antes de usar o frontend.
+- O Redis roda dentro do Docker na rede interna, sem expor porta para o host, evitando conflito com outros projetos Redis locais.
+- A pasta `covers/` é compartilhada entre o container do backend (para salvar uploads) e o frontend (para servir as imagens).
+- A documentação completa dos endpoints está disponível em `/docs/`.

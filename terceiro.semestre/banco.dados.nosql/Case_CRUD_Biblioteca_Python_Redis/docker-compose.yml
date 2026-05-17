@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  # Redis — banco NoSQL (db=1, separado do outro projeto)
+  # Sem bind de porta para o host: o backend acessa via rede Docker interna (redis:6379)
+  # Isso evita conflito com outros projetos Redis rodando na porta 6379 do host
+  redis:
+    image: redis:7-alpine
+    container_name: biblioteca2-redis
+    volumes:
+      - biblioteca2_redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Backend Flask
+  backend:
+    build: ./backend
+    container_name: biblioteca2-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      # Pasta de capas compartilhada com o frontend (React serve via /covers/)
+      - ./frontend/public/covers:/covers
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=1
+      - FLASK_SECRET_KEY=biblioteca-digital-secret-2024
+      - FLASK_DEBUG=false
+      - FLASK_PORT=5000
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  biblioteca2_redis_data:
