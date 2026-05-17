@@ -1,0 +1,116 @@
+# Biblioteca Municipal Online
+
+Sistema CRUD de Biblioteca Digital desenvolvido com Python, FastAPI, Redis, React e Tailwind CSS.
+
+## Requisitos
+
+- Python instalado
+- Node.js instalado
+- Docker instalado
+- Redis rodando via Docker
+
+## Como Rodar o Redis com Docker
+
+Na raiz do projeto, execute:
+
+```bash
+docker run --name redis-biblioteca -p 6379:6379 -d redis
+```
+
+Para verificar se o container esta rodando:
+
+```bash
+docker ps
+```
+
+Se o container ja existir e estiver parado:
+
+```bash
+docker start redis-biblioteca
+```
+
+## Como Rodar o Backend
+
+Entre na pasta do backend:
+
+```bash
+cd backend
+```
+
+Crie o arquivo `.env` com:
+
+```env
+REDIS_HOST=localhost
+REDIS_PORT=6379
+```
+
+Instale as dependencias necessarias, caso ainda nao tenha instalado:
+
+```bash
+pip install fastapi uvicorn redis python-dotenv
+```
+
+Rode a API:
+
+```bash
+python -m uvicorn main:app --reload
+```
+
+Backend:
+
+```txt
+http://127.0.0.1:8000
+```
+
+Documentacao da API:
+
+```txt
+http://127.0.0.1:8000/docs
+```
+
+## Como Rodar o Frontend
+
+Em outro terminal, entre na pasta do frontend:
+
+```bash
+cd frontend
+```
+
+Instale as dependencias:
+
+```bash
+npm i
+```
+
+Rode o frontend:
+
+```bash
+npm run server
+```
+
+Frontend:
+
+```txt
+http://127.0.0.1:5173
+```
+
+## Login Admin
+
+O usuario admin e criado automaticamente quando o backend inicia, caso ainda nao exista no Redis.
+
+```txt
+username: admin
+senha: admin
+```
+
+Atalho:
+
+```txt
+admin/admin
+```
+
+## Observacoes
+
+- O backend precisa estar rodando para o frontend consumir a API.
+- O Redis precisa estar rodando antes de iniciar o backend.
+- A documentacao dos endpoints fica disponivel em `/docs`.
