@@ -16,7 +16,6 @@ ADMIN_PASSWORD = "admin"
 ROLE_ADMIN = "Admin"
 ROLE_USER = "User"
 
-
 def tratar_erro_redis():
     raise HTTPException(status_code=503, detail="Redis indisponivel")
 

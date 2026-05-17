@@ -50,7 +50,7 @@ REDIS_HOST=localhost
 REDIS_PORT=6379
 ```
 
-Instale as dependencias necessarias, caso ainda nao tenha instalado:
+Instale as dependencias necessárias, caso ainda nao tenha instalado:
 
 ```bash
 pip install fastapi uvicorn redis python-dotenv
