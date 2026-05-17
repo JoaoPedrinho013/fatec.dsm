@@ -84,17 +84,27 @@ def notificar_usuarios_em_espera(livro_id: int):
     r.delete(chave_espera_livro(livro_id))
 
 
-def devolver_emprestimo(username: str, livro_id: int):
+def devolver_emprestimo(username: str, livro_id: int, notificar_atraso: bool = False):
     chave = chave_emprestimo(username, livro_id)
 
     if not r.exists(chave):
         raise HTTPException(status_code=404, detail="Emprestimo nao encontrado")
+
+    livro = r.hgetall(chave_livro(livro_id))
+    titulo = livro.get("titulo", f"Livro #{livro_id}")
 
     r.delete(chave)
     r.srem(chave_emprestimos_usuario(username), livro_id)
     r.zrem("emprestimos_vencimento", f"{username}:{livro_id}")
     r.hincrby(chave_livro(livro_id), "quantidade", 1)
     atualizar_status_livro(livro_id)
+
+    if notificar_atraso:
+        r.rpush(
+            chave_notificacoes_usuario(username),
+            f'Removemos "{titulo}" da sua conta. Tempo limite atingido',
+        )
+
     notificar_usuarios_em_espera(livro_id)
 
 
@@ -109,7 +119,7 @@ def processar_emprestimos_vencidos():
             livro_id = int(livro_id_texto)
 
             if r.exists(chave_emprestimo(username, livro_id)):
-                devolver_emprestimo(username, livro_id)
+                devolver_emprestimo(username, livro_id, notificar_atraso=True)
             else:
                 r.zrem("emprestimos_vencimento", item)
     except RedisError:

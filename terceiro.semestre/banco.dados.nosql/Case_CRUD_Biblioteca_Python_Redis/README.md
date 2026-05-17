@@ -6,7 +6,7 @@ O sistema permite que um administrador gerencie o acervo da Biblioteca Municipal
 
 Usuarios comuns podem criar uma conta, consultar todos os livros disponiveis, pegar livros emprestados, favoritar livros e entrar em uma lista de espera quando um livro estiver sem estoque. Cada usuario pode ter no maximo 3 livros emprestados ao mesmo tempo.
 
-Cada emprestimo dura 10 minutos. Se o usuario nao devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque. Quando um livro volta a ficar disponivel, os usuarios que estavam na lista de espera recebem uma notificacao dentro da propria aplicacao.
+Cada emprestimo dura 10 minutos. Se o usuario nao devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque e emitirá uma notificação. Quando um livro volta a ficar disponivel, os usuarios que estavam na lista de espera recebem uma notificacao dentro da propria aplicacao.
 
 ## Requisitos
 
