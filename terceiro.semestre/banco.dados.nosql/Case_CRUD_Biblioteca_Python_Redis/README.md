@@ -1,6 +1,12 @@
 # Biblioteca Municipal Online
 
-Sistema CRUD de Biblioteca Digital desenvolvido com Python, FastAPI, Redis, React e Tailwind CSS.
+Sistema de Biblioteca Digital desenvolvido com Python, FastAPI, Redis, React e Tailwind CSS.
+
+O sistema permite que um administrador gerencie o acervo da Biblioteca Municipal Online, cadastrando, atualizando e removendo livros. Os livros possuem titulo, autor, categoria, ano de publicacao, quantidade disponivel e status.
+
+Usuarios comuns podem criar uma conta, consultar todos os livros disponiveis, pegar livros emprestados, favoritar livros e entrar em uma lista de espera quando um livro estiver sem estoque. Cada usuario pode ter no maximo 3 livros emprestados ao mesmo tempo.
+
+Cada emprestimo dura 10 minutos. Se o usuario nao devolver o livro dentro desse prazo, o sistema devolve automaticamente o livro ao estoque. Quando um livro volta a ficar disponivel, os usuarios que estavam na lista de espera recebem uma notificacao dentro da propria aplicacao.
 
 ## Requisitos
 
