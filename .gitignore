@@ -140,3 +140,5 @@ composer.lock
 *.cache
 *.DS_Store
 Thumbs.db
+
+terceiro.semestre/desenvolvimento.web/aulas/14.05.26/firebase.json

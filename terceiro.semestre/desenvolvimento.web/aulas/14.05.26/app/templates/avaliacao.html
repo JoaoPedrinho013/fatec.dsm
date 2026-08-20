@@ -1,0 +1,19 @@
+<h1> Avaliações </h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="cliente" placeholder="Nome do Cliente"> <br><br>
+    <textarea name="comentario" placeholder="Digite seu comentario"></textarea><br><br>
+    <input type="number" name="nota" min="0" max="5" placeholder="Nota"> <br><br>
+    <button type="submit"> Salvar </button>
+</form>
+
+<hr>
+
+{% for item in avaliacoes %}
+    <div>
+        <h3>{{ item.cliente }}</h3>
+        <p>{{ item.comentario }}</p>
+        <strong>Nota: {{ item.nota }}</strong>
+    </div>
+    <hr>
+{% endfor %}
