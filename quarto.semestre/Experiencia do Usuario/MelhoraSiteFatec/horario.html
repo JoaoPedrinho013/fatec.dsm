@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#64748b">
+  <title>Horário | SIGA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" data-page="horario"></script>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4"/><path d="M20 12H9"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="topbar">
+    <a class="brand" href="inicio.html" aria-label="SIGA - início">
+      <span class="brand__mark" aria-hidden="true">S</span>
+      <span class="brand__name">siga</span>
+    </a>
+    <a class="user" href="#" data-soon aria-label="Perfil de Roberto Carlos">
+      <span class="user__hi">Olá, <strong>Roberto</strong></span>
+      <span class="avatar">
+        <span aria-hidden="true">RC</span>
+        <img src="img/roberto.png" alt="Foto de Roberto Carlos" onerror="this.remove()">
+      </span>
+    </a>
+  </header>
+
+  <main class="page">
+
+    <div class="page-head">
+      <a class="back" href="inicio.html" aria-label="Voltar para o início"><svg class="i"><use href="#i-back"/></svg></a>
+      <div>
+        <h1>Horário das aulas</h1>
+        <p>Segunda a sexta. Aulas seguidas aparecem juntas.</p>
+      </div>
+    </div>
+
+    <!-- Celular e tablet: escolhe o dia. Computador: esta faixa some e a semana toda aparece. -->
+    <div class="daytabs" role="group" aria-label="Escolher o dia da semana">
+      <button class="daytab" type="button" data-day="seg" aria-label="Segunda-feira">Seg</button>
+      <button class="daytab" type="button" data-day="ter" aria-label="Terça-feira">Ter</button>
+      <button class="daytab" type="button" data-day="qua" aria-label="Quarta-feira">Qua</button>
+      <button class="daytab" type="button" data-day="qui" aria-label="Quinta-feira">Qui</button>
+      <button class="daytab" type="button" data-day="sex" aria-label="Sexta-feira">Sex</button>
+    </div>
+
+    <div class="week">
+
+      <!-- SEGUNDA -->
+      <section class="day" data-day="seg" aria-labelledby="d-seg">
+        <h2 class="day__title" id="d-seg">Segunda-feira <span class="today-badge">Hoje</span></h2>
+        <ul class="blocks">
+          <li class="block" style="--c:#2563eb">
+            <div class="block__time"><strong>15:00</strong><span class="sr">até</span><span class="block__end">18:30</span></div>
+            <div>
+              <p class="block__code">IAL011</p>
+              <h3>Internet das Coisas e Aplicações</h3>
+              <p class="block__prof">Paulo Roberto Tazinazo Candido</p>
+              <p class="block__meta"><span class="pill">4 aulas</span><span class="slots">Aulas às 15:00 · 15:50 · 16:50 · 17:40</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- TERÇA -->
+      <section class="day" data-day="ter" aria-labelledby="d-ter">
+        <h2 class="day__title" id="d-ter">Terça-feira <span class="today-badge">Hoje</span></h2>
+        <ul class="blocks">
+          <li class="block" style="--c:#0891b2">
+            <div class="block__time"><strong>15:00</strong><span class="sr">até</span><span class="block__end">18:30</span></div>
+            <div>
+              <p class="block__code">ISW032</p>
+              <h3>Integração e Entrega Contínua</h3>
+              <p class="block__prof">Paulo Roberto Tazinazo Candido</p>
+              <p class="block__meta"><span class="pill">4 aulas</span><span class="slots">Aulas às 15:00 · 15:50 · 16:50 · 17:40</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- QUARTA -->
+      <section class="day" data-day="qua" aria-labelledby="d-qua">
+        <h2 class="day__title" id="d-qua">Quarta-feira <span class="today-badge">Hoje</span></h2>
+        <ul class="blocks">
+          <li class="block" style="--c:#7c3aed">
+            <div class="block__time"><strong>13:10</strong><span class="sr">até</span><span class="block__end">14:50</span></div>
+            <div>
+              <p class="block__code">ISW033</p>
+              <h3>Laboratório de Desenvolvimento Web</h3>
+              <p class="block__prof">Eulaliane Aparecida Gonçalves</p>
+              <p class="block__meta"><span class="pill">2 aulas</span><span class="slots">Aulas às 13:10 · 14:00</span></p>
+            </div>
+          </li>
+          <li class="block" style="--c:#db2777">
+            <div class="block__time"><strong>15:00</strong><span class="sr">até</span><span class="block__end">16:40</span></div>
+            <div>
+              <p class="block__code">IHC005</p>
+              <h3>Experiência do Usuário</h3>
+              <p class="block__prof">Leandro de Almeida Sanches</p>
+              <p class="block__meta"><span class="pill">2 aulas</span><span class="slots">Aulas às 15:00 · 15:50</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- QUINTA -->
+      <section class="day" data-day="qui" aria-labelledby="d-qui">
+        <h2 class="day__title" id="d-qui">Quinta-feira <span class="today-badge">Hoje</span></h2>
+        <ul class="blocks">
+          <li class="block" style="--c:#7c3aed">
+            <div class="block__time"><strong>13:10</strong><span class="sr">até</span><span class="block__end">14:50</span></div>
+            <div>
+              <p class="block__code">ISW033</p>
+              <h3>Laboratório de Desenvolvimento Web</h3>
+              <p class="block__prof">Eulaliane Aparecida Gonçalves</p>
+              <p class="block__meta"><span class="pill">2 aulas</span><span class="slots">Aulas às 13:10 · 14:00</span></p>
+            </div>
+          </li>
+          <li class="block" style="--c:#ea580c">
+            <div class="block__time"><strong>15:00</strong><span class="sr">até</span><span class="block__end">18:30</span></div>
+            <div>
+              <p class="block__code">ILP038</p>
+              <h3>Programação para Dispositivos Móveis I</h3>
+              <p class="block__prof">Alessandro Ferreira Paz Lima</p>
+              <p class="block__meta"><span class="pill">4 aulas</span><span class="slots">Aulas às 15:00 · 15:50 · 16:50 · 17:40</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SEXTA
+           ATENÇÃO: no print 7 a sexta-feira aparece cortada. Só dá para ver que são 4 aulas de
+           MET004 e 2 de ING086. Os HORÁRIOS abaixo são inventados para o protótipo. Confira no SIGA. -->
+      <section class="day" data-day="sex" aria-labelledby="d-sex">
+        <h2 class="day__title" id="d-sex">Sexta-feira <span class="today-badge">Hoje</span></h2>
+        <ul class="blocks">
+          <li class="block" style="--c:#16a34a">
+            <div class="block__time"><strong>13:10</strong><span class="sr">até</span><span class="block__end">16:40</span></div>
+            <div>
+              <p class="block__code">MET004</p>
+              <h3>Estatística Aplicada</h3>
+              <p class="block__prof">Carlos Cesar Cavalcante Dias</p>
+              <p class="block__meta"><span class="pill">4 aulas</span><span class="slots">Aulas às 13:10 · 14:00 · 15:00 · 15:50</span></p>
+            </div>
+          </li>
+          <li class="block" style="--c:#ca8a04">
+            <div class="block__time"><strong>16:50</strong><span class="sr">até</span><span class="block__end">18:30</span></div>
+            <div>
+              <p class="block__code">ING086</p>
+              <h3>Inglês II</h3>
+              <p class="block__prof">Wellington Rosa Oliveira</p>
+              <p class="block__meta"><span class="pill">2 aulas</span><span class="slots">Aulas às 16:50 · 17:40</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <nav class="tabbar" aria-label="Navegação principal">
+    <a class="tabbar__item" href="inicio.html"><svg class="i"><use href="#i-home"/></svg><span>Início</span></a>
+    <a class="tabbar__item is-current" href="horario.html" aria-current="page"><svg class="i"><use href="#i-clock"/></svg><span>Horário</span></a>
+    <a class="tabbar__item" href="index.html" data-logout><svg class="i"><use href="#i-logout"/></svg><span>Sair</span></a>
+  </nav>
+
+</body>
+</html>

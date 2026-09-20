@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#64748b">
+  <title>Entrar | SIGA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" data-page="login"></script>
+</head>
+<body class="login-page">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.7C3.7 8.5 2 12 2 12s3.5 7 10 7c1.6 0 3-.4 4.3-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+    </defs>
+  </svg>
+
+  <main class="login">
+
+    <section class="login__brand">
+      <a class="brand brand--lg" href="index.html" aria-label="SIGA">
+        <span class="brand__mark" aria-hidden="true">S</span>
+        <span class="brand__name">siga</span>
+      </a>
+    </section>
+
+    <section class="login__panel">
+      <div class="login__card">
+        <h2>Entrar</h2>
+        <p>Use seus dados de acesso da FATEC.</p>
+
+        <form id="login-form" class="form" novalidate>
+          <div class="field">
+            <label for="usuario">RA ou e-mail institucional</label>
+            <div class="input">
+              <svg class="i"><use href="#i-user"/></svg>
+              <input id="usuario" name="usuario" type="text" autocomplete="username" placeholder="Digite seu RA">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="senha">Senha</label>
+            <div class="input">
+              <svg class="i"><use href="#i-lock"/></svg>
+              <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="Digite sua senha">
+              <button type="button" class="toggle-pass" id="toggle-senha" aria-label="Mostrar senha" aria-pressed="false">
+                <svg class="i"><use href="#i-eye"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn"><span>Entrar</span></button>
+        </form>
+
+        <p class="hint">Protótipo: pode entrar sem preencher nada. O acesso é sempre como <strong>Roberto Carlos</strong>.</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
