@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste de Conceito – AvisaFatec</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+  :root{--bg:#F6F3EC;--card:#FCFAF6;--line:#E2DDD0;--ink:#16323C;--muted:#4B6068;--teal:#1F6F78;--amber:#F2B35E}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#10242B;--card:#17323B;--line:#2A4A55;--ink:#F1EEE6;--muted:#A9BEC4;--teal:#7CC7CF}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;line-height:1.5}
+  .page{max-width:1200px;margin:0 auto;padding:32px 16px 48px}
+  header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:24px}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:0 0 6px}
+  h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:0}
+  .group{color:var(--muted);margin:0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .card h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:0 0 16px}
+  .card h3{font-size:16px;margin:20px 0 8px}
+  .card p{margin:0 0 14px}
+  ol{margin:0;padding-left:22px}
+  ol li{margin-bottom:12px;padding-left:4px}
+  .decision{margin-top:20px;background:#16323C;color:#F6F3EC;border-radius:16px;padding:24px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+  @media (prefers-color-scheme: dark){.decision{background:#0A171C;border:1px solid var(--line)}}
+  .pill{background:var(--amber);color:#16323C;font-weight:700;padding:10px 22px;border-radius:999px;white-space:nowrap}
+  .decision p{margin:0;flex:1;min-width:260px}
+  .note{margin-top:16px;font-size:14px;color:var(--muted)}
+  @media print{body{background:#fff}.page{padding:0}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <div>
+      <p class="eyebrow">Teste de conceito · UX · DSM · Fatec Praia Grande</p>
+      <h1>AvisaFatec: um mural único para os avisos da turma</h1>
+    </div>
+    <p class="group">Grupo: Caio Edimar, Geovanny Ferreira e João Pedro</p>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>1 · Conceito</h2>
+      <p><b>Problema e público:</b> alunos da Fatec que trabalham durante o dia chegam ao campus e descobrem que a aula foi cancelada ou mudou de sala, porque os avisos ficam espalhados entre WhatsApp, SIGA e e-mail.</p>
+      <p><b>Solução:</b> o AvisaFatec seria um mural único da turma, que envia só os avisos do curso e do semestre de cada aluno.</p>
+      <p><b>Benefício:</b> não perder deslocamento, tempo nem prazos.</p>
+    </section>
+
+    <section class="card">
+      <h2>2 · Cinco perguntas neutras</h2>
+      <ol>
+        <li>Como você fica sabendo hoje de aula cancelada, troca de sala ou prazos?</li>
+        <li>Conte a última vez que um aviso chegou tarde para você. O que aconteceu?</li>
+        <li>O que você entende que essa solução faria?</li>
+        <li>Em que situação do seu dia você usaria isso? O que te impediria?</li>
+        <li>O que parece confuso, desnecessário ou faltando nessa ideia?</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>3 · Síntese</h2>
+      <h3>Aprendizados</h3>
+      <ol>
+        <li>Avisos chegam por vários canais e ninguém sabe qual é o oficial.</li>
+        <li>Quem trabalha sofre mais: perde deslocamento e horas com aviso tardio.</li>
+        <li>O valor está em filtrar só o que afeta a minha turma.</li>
+      </ol>
+      <h3>Dúvidas e riscos</h3>
+      <ol>
+        <li>Quem publica os avisos e como garantir que são oficiais?</li>
+        <li>Mais um app: pode ser que prefiram ficar no WhatsApp.</li>
+      </ol>
+    </section>
+  </div>
+
+  <section class="decision">
+    <span class="pill">4 · DECISÃO: AJUSTAR</span>
+    <p>Há valor claro, mas existem barreiras de confiança e de adoção. Próximo passo: testar com uma turma, usando uma fonte oficial de avisos e notificação por canal que o aluno já usa, em vez de um novo app.</p>
+  </section>
+
+</main>
+</body>
+</html>
