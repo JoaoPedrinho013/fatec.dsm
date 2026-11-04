@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wireframes — AgendaAqui</title>
+<style>
+body{font:16px/1.5 Arial,sans-serif;margin:0;padding:24px;background:#fff;color:#222}
+h1{font-size:1.5rem}h2{font-size:1.1rem;margin:0 0 8px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.f{border:2px solid #222;border-radius:14px;padding:12px;background:#f5f5f5;min-height:520px}
+.b{border:1.5px solid #555;background:#fff;border-radius:8px;padding:8px;margin:8px 0;font-size:.85rem}
+.bar{background:#ccc;border-radius:6px;padding:6px 8px;font-size:.85rem;display:flex;justify-content:space-between}
+.btn{background:#444;color:#fff;border-radius:8px;padding:8px;text-align:center;font-size:.85rem;margin:8px 0}
+.map{height:110px;background:repeating-linear-gradient(45deg,#ddd,#ddd 8px,#eee 8px,#eee 16px);border:1.5px solid #555;border-radius:8px;text-align:center;line-height:110px;font-size:.85rem}
+.row{display:flex;gap:6px;flex-wrap:wrap}.chip{border:1.5px solid #555;border-radius:99px;padding:2px 10px;font-size:.8rem;background:#fff}
+small{color:#555}.n{display:inline-block;background:#222;color:#fff;border-radius:50%;width:20px;height:20px;text-align:center;font-size:.75rem;margin-right:4px}
+</style></head><body>
+<h1>AgendaAqui — Wireframes (baixa fidelidade)</h1>
+<p><small>Fluxo principal: Explorar → Empresa → Agendar → Confirmação. Os números indicam os elementos descritos abaixo de cada tela.</small></p>
+<div class="g">
+<section><h2>Tela 1 — Explorar</h2><div class="f">
+<div class="bar"><b>AgendaAqui</b><span>Explorar | Meus agend. | Aa | ☾</span></div>
+<div class="b"><span class="n">1</span>Buscar serviço ou empresa…</div>
+<div class="row"><span class="chip">Todos</span><span class="chip">Manicure</span><span class="chip">Barbearia</span><span class="chip">Cabeleireiro</span></div>
+<div class="row"><span class="chip"><span class="n">2</span>Ordenar ▾</span><span class="chip">Nota ▾</span><span class="chip">♡ Favoritos</span><span class="chip">Usar localização</span></div>
+<div class="map"><span class="n">3</span>MAPA com GPS e preços</div>
+<div class="b"><span class="n">4</span><b>Nome da empresa</b> ♡<br><small>★ 4,7 · 3 avaliações · 900 m · a partir de R$ 40</small><br><small>Próximo horário: qui 09:00</small></div>
+<div class="b"><b>Nome da empresa</b> ♡<br><small>★ 5,0 · Novo · Em destaque</small></div>
+</div><p><small>1 busca por texto · 2 filtros e ordenação · 3 mapa com localização · 4 cartão com nota, distância, preço e próximo horário.</small></p></section>
+
+<section><h2>Tela 2 — Empresa</h2><div class="f">
+<div class="bar"><b>AgendaAqui</b><span>Explorar | Meus agend. | Aa | ☾</span></div>
+<small>← Voltar para a lista</small>
+<div class="b"><b>Barbearia do Zé</b> <small>★ 4,7 · 3 avaliações</small><br><small>Barbearia · 900 m</small></div>
+<div class="b"><span class="n">1</span><b>Serviços e preços</b><br>Corte masculino — R$ 40 <span class="chip">Agendar</span><br>Barba — R$ 30 <span class="chip">Agendar</span></div>
+<div class="b"><span class="n">2</span><b>Avaliações</b><br>4,7 ★★★★★<br>5★ ▇▇▇▇ 2 · 4★ ▇▇ 1<br><small>Carlos ★★★★★ “Melhor corte…”</small></div>
+<div class="b"><span class="n">3</span><b>Deixe sua avaliação</b><br>☆☆☆☆☆<br>[ Nome ] [ Comentário ]<div class="btn">Publicar avaliação</div></div>
+<div class="b"><span class="n">4</span>Endereço · Horário · Telefone<div class="btn">Como chegar</div></div>
+</div><p><small>1 serviços com ação direta · 2 resumo das notas + comentários · 3 formulário de avaliação · 4 informações e rota.</small></p></section>
+
+<section><h2>Tela 3 — Agendar</h2><div class="f">
+<div class="bar"><b>AgendaAqui</b><span>Explorar | Meus agend. | Aa | ☾</span></div>
+<div class="row" style="margin-top:8px"><span class="chip">1 Serviço ✓</span><span class="chip"><b>2 Data e horário</b></span><span class="chip">3 Dados</span><span class="chip">4 Revisão</span></div>
+<h2 style="margin-top:12px">Escolha o dia e o horário</h2>
+<div class="b"><span class="n">1</span>Dia<div class="row"><span class="chip">qui 05/11</span><span class="chip">sex 06/11</span><span class="chip">sáb 07/11</span></div></div>
+<div class="b"><span class="n">2</span>Horário<div class="row"><span class="chip">09:00</span><span class="chip">10:00</span><span class="chip" style="text-decoration:line-through">11:00</span><span class="chip">13:00</span></div></div>
+<small>Mensagem de erro aparece aqui se faltar escolha.</small>
+<div class="row" style="justify-content:space-between"><span class="chip">Voltar</span><span class="btn" style="padding:6px 14px">Continuar</span></div>
+</div><p><small>1 e 2 seleção em dois passos · horários ocupados riscados e desativados · indicador de etapa no topo.</small></p></section>
+</div></body></html>

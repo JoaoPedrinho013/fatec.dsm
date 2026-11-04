@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>AgendaAqui — agende serviços de beleza perto de você</title>
+<meta name="description" content="Encontre, compare e agende serviços de estética perto de você, com mapa, avaliações e comentários.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%239F1C48'/%3E%3Cpath d='M9 16.500l4.500 4.500L23 11' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="style.css">
+<script>
+  // aplica o tema salvo antes de pintar a página (evita "piscar")
+  try{var t=localStorage.getItem("aa_theme");if(t)document.documentElement.dataset.theme=t;
+      var s=localStorage.getItem("aa_size");if(s)document.documentElement.dataset.size=s;}catch(e){}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10A4.500 4.500 0 0112 7.200 4.500 4.500 0 0119.500 10c0 5.400-7.500 10-7.500 10z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.500" y="5" width="17" height="15.500" rx="2.500"/><path d="M3.500 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><path d="M12 7.500V12l3 2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.500A8 8 0 019.500 4 8 8 0 1020 14.500z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.500v2M12 19.500v2M2.500 12h2M19.500 12h2M5.300 5.300l1.400 1.400M17.300 17.300l1.400 1.400M5.300 18.700l1.400-1.400M17.300 6.700l1.400-1.400"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 19l5-13 5 13M6 14.500h6M16 19l2.500-6.500L21 19M17 17h3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M12 3l7 17-7-4-7 4z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16l-6 7v5l-4 2v-7z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3.500 6v14L9 18l6 2 5.500-2V4L15 6z"/><path d="M9 4v14M15 6v14"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 24 24"><rect x="3.500" y="5" width="17" height="15.500" rx="3"/><path d="M8 3v4M16 3v4M9 14.500l2.200 2.200L15.500 12"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/" aria-label="AgendaAqui, página inicial">
+      <span class="logo"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg></span>AgendaAqui
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#/" id="nav-home" data-nav="home"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="lbl">Explorar</span></a>
+      <a href="#/meus" id="nav-meus" data-nav="meus"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg><span class="lbl">Meus agendamentos</span><span class="badge-n" id="nbook" hidden></span></a>
+      <button class="tool" id="btn-size" type="button" aria-label="Tamanho do texto: normal. Clique para aumentar">
+        <svg class="i" aria-hidden="true"><use href="#i-text"/></svg><span class="lbl" id="size-lbl">Texto</span>
+      </button>
+      <button class="tool" id="btn-theme" type="button" aria-pressed="false" aria-label="Modo escuro">
+        <svg class="i" aria-hidden="true"><use id="theme-use" href="#i-moon"/></svg><span class="lbl" id="theme-lbl">Escuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer>Protótipo acadêmico — Desafio de UX (DSM). Empresas, avaliações e horários são fictícios. Mapa: © Esri. · <a href="wireframes.html">Wireframes</a></footer>
+
+<nav class="tabbar" aria-label="Navegação do aplicativo">
+  <a href="#/" data-nav="home"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span>Explorar</span></a>
+  <a href="#/meus" data-nav="meus"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg><span>Agendamentos</span><span class="badge-n" id="nbook2" hidden></span></a>
+  <a href="#/config" data-nav="config"><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg><span>Configurações</span></a>
+</nav>
+
+<div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+<div class="toasts" id="toasts" role="status"></div>
+<dialog id="dlg" aria-labelledby="dlg-t">
+  <h2 id="dlg-t" style="font-size:1.3rem"></h2>
+  <p id="dlg-p"></p>
+  <div style="display:flex;gap:.75rem;justify-content:flex-end;flex-wrap:wrap">
+    <button class="btn ghost" id="dlg-no" type="button">Voltar</button>
+    <button class="btn danger" id="dlg-yes" type="button">Confirmar</button>
+  </div>
+</dialog>
+
+<dialog id="sheet" class="sheet" aria-labelledby="sheet-t"></dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
